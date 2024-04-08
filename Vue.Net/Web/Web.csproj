@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="html\cjkb.html" />
     <Content Include="html\cjkb_cheJian.html" />
+    <Content Include="html\HtmlPage1.html" />
     <Content Include="html\js\tableExport.jquery.plugin-master\.gitignore" />
     <Content Include="html\js\tableExport.jquery.plugin-master\libs\FileSaver\FileSaver.min.js" />
     <Content Include="html\js\tableExport.jquery.plugin-master\libs\html2canvas\html2canvas.min.js" />
