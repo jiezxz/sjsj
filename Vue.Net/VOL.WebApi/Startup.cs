@@ -59,7 +59,7 @@ namespace VOL.WebApi
             Services = services;
             // services.Replace( ServiceDescriptor.Transient<IControllerActivator, ServiceBasedControllerActivator>());
             services.AddSession();
-            services.AddMemoryCache();
+            services.AddMemoryCache(); 
             services.AddHttpContextAccessor(); 
             services.AddMvc(options =>
             {

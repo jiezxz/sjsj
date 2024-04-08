@@ -376,11 +376,11 @@ namespace VOL.Core.BaseProvider
                 .ToList();
             gridData.summary = GetDetailSummary<Detail>(queryeable);
             return gridData;
-        }
+        } 
 
 
 
-        /// <summary>
+        /// <summary> 
         /// 上传文件
         /// </summary>
         /// <param name="files"></param>
