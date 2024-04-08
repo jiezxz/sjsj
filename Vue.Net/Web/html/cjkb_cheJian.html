@@ -1,0 +1,269 @@
+﻿<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>车间看板</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
+
+
+    <style>
+              ::-webkit-scrollbar { width: 0.1em; }
+        /* 表格样式 */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* 表头样式 */
+        th {
+           
+            background-color: #ddd;
+            border: 3px solid #ddd;
+        }
+
+        /* 表体样式 */
+        td {
+            width: 20%;
+            padding: 0px;
+            font-size: 35px;
+            border: 3px solid #ddd;
+        }
+        tr{
+            height: 10%;
+        }
+
+        /* 鼠标悬停表格样式 */
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+            background-color: steelblue;
+        }
+        .number{
+            font-size: 60px;
+
+        }
+        .bold{
+            font-weight: bold;
+            font-size: 60px;
+        }
+        .yg{
+
+            text-align: center; width: 60px;float: left; margin: 10px;
+        }
+        .yg img{ width:100% ; float: left;    width: 60px;
+    height: 80px;}
+        .name{
+            width: 100%;
+    font-size: 12px;
+    float: left;
+    text-align: center;
+        }
+        .title1 td{
+           
+        }
+    </style>
+</head>
+
+<body ontouchstart="" class="page-bg">
+    <table>
+        <thead>
+            <tr>
+                <td colspan="5" class="title">生产数据</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="    background-color: aliceblue;font-weight: bold;"  class="title1">
+                <td >产线</td>
+                <td >订单号</td>
+                <td >规格</td>
+                <td >今日出勤人数</td>
+                <td >异物管控</td>
+            </tr>
+            <tr>
+                <td id="shengChanXian"></td>
+                <td id="dingDanHao"> </td>
+                <td id="guiGe"></td>
+                <td id="jrcqrs" class="bold"></td>
+                <td id="ywgk"  class="bold"></td>
+            </tr>
+            <tr style="    background-color: khaki;
+        font-weight: bold;" class="title1">
+                <td>项目</td>
+                <td>日目标</td>
+                <td>实绩</td>
+                <td>达成率</td>
+                <td>对比昨天</td>
+            </tr>
+            <tr>
+                <td>母卷(wm²)</td>
+                <td id="mj_rmb" class="pingfang number"> </td>
+                <td id="mj_sj" class=" bold"></td>
+                <td id="mj_dcl" class="baifen bold"></td>
+                <td id="mj_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
+            </tr>
+
+            <tr>
+                <td>运转率(%)</td>
+                <td id="yzl_rmb" class="baifen number"> </td>
+                <td id="yzl_sj" class="baifen bold"></td>
+                <td id="yzl_dcl" class="baifen bold"></td>
+                <td id="yzl_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
+            </tr>
+
+            <tr>
+                <td>A率 (%)</td>
+                <td id="al_rmb" class="baifen number"> </td>
+                <td id="al_sj" class="baifen bold"></td>
+                <td id="al_dcl" class="baifen bold"></td>
+                <td id="al_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
+            </tr>
+            <tr>
+                <td>收率 (%)</td>
+                <td id="sl_rmb" class="baifen number"> </td>
+                <td id="sl_sj" class="baifen bold"></td>
+                <td id="sl_dcl" class="baifen bold"></td>
+                <td id="sl_dbzt" class="bold" style=" transform: scale(2, 1);"></td>
+            </tr>
+            <tr>
+                <td>今日出勤人员</td>
+                <td colspan="4" id="jrcqry" style="text-align: left;">
+                
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    var getUrlParam = function (name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);// 
+        if (r != null) return unescape(r[2]); return null;// 
+    }
+    var shengChanXian=getUrlParam("shengChanXian").split(',');
+    var index=0;
+    var init = function (cx) {
+        var params = { "page": 1, "rows": 1, "sort": "CreateDate", "order": "desc", "wheres": '[{"name":"shengChanXian","value":"' + shengChanXian[index] + '","displayType":"text"}]' };
+        $.ajax({
+            url: "http://172.21.56.96:9099/api/dataCollection_cjkb/getPageData",
+            type: 'POST',
+            data: JSON.stringify(params),
+            contentType: 'application/json',
+            dateType: 'json',
+            success: function (result) {
+                index ++;
+                if(index==shengChanXian.length){
+                    index=0;
+
+                }
+                var obj = result.rows[0];
+                if (obj) {
+                    $(".title").text(new Date(obj.CreateDate).getFullYear() + "年" + (parseInt(new Date(obj.CreateDate).getMonth()) + 1) + "月" + new Date(obj.CreateDate).getDate() + "日生产数据");
+                    $("[id]").each(function () {
+                        var id = $(this).attr('id');
+                        if (id !== "") {
+                            if (id == "jrcqry") {
+                                $(this).html("");
+                               var names=obj[id].replace(/s+/g,'').replace(/，/g,",").split(',');
+                               $(names).each(function(i,val){
+                                if(val!="")
+                                $("#jrcqry").append('<div class="yg"><img src="img/personnel/生产/'+val+'.jpg"  onerror="this.src=\'img/default_user.jpg\';this.οnerrοr=null"  /><span class="name">'+val+'</span></div>');
+
+                               });
+                            }else{
+                                var val=obj[id];
+
+                                if(parseFloat( val)>30){
+                                    val= parseFloat( val).toFixed(1);
+
+                                }
+                                $(this).text(val);
+                            }
+                            if (obj[id] == "合格") {
+                                $(this).css("color", "red");
+                                $(this).text("Y");
+                            }
+                            if (obj[id] == "不合格") {
+                                $(this).css("color", "green");
+                                $(this).text("N");
+                            }
+                            if (obj[id] == "上升") {
+                                $(this).css("color", "red");
+                                $(this).text("↑");
+                            }
+                            if (obj[id] == "下降") {
+                                $(this).css("color", "green");
+                                $(this).text("↓");
+                            }
+                            if (id.indexOf('dcl') !== -1) {
+                                if (obj[id] >= 98) {
+
+                                    $(this).css("color", "red");
+                                } else {
+                                    $(this).css("color", "green");
+
+                                }
+                            }
+                        }
+                    });
+                    if (obj["mj_sj"] >= obj["mj_rmb"]) {
+                        $(mj_sj).css("color", "red");
+                    } else {
+
+                        $(mj_sj).css("color", "green");
+                    }
+
+                    if (obj["yzl_sj"] >= obj["yzl_rmb"]) {
+                        $(yzl_sj).css("color", "red");
+                    } else {
+
+                        $(yzl_sj).css("color", "green");
+                    }
+
+                    if (obj["al_sj"] >= obj["al_rmb"]) {
+                        $(al_sj).css("color", "red");
+                    } else {
+
+                        $(al_sj).css("color", "green");
+                    }
+                    if (obj["sl_sj"] >= obj["sl_rmb"]) {
+                        $(sl_sj).css("color", "red");
+                    } else {
+
+                        $(sl_sj).css("color", "green");
+                    }
+                }
+                // $(".baifen").append("%");
+                // $(".pingfang").append("(wm²)");
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (XMLHttpRequest.status == 401 || XMLHttpRequest.status == 402) {
+
+                }
+            }
+
+        });
+    }
+
+ 
+
+
+  
+    init();
+    $(document).ready(function () {
+        // 每隔10秒执行一次函数
+        setInterval(function () {
+            // 执行的代码块
+            init();
+        }, 60000);
+    });
+
+</script>
+
+</html>
