@@ -53,13 +53,13 @@ namespace VOL.Entity.DomainModels
        public string xingHao { get; set; }
 
        /// <summary>
-       ///申请人
+       ///客户
        /// </summary>
-       [Display(Name ="申请人")]
+       [Display(Name ="客户")]
        [MaxLength(50)]
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
-       public string sqr { get; set; }
+       public string keHu { get; set; }
 
        /// <summary>
        ///调整日期
@@ -85,6 +85,15 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="int")]
        [Editable(true)]
        public int? lianLuoShiYou { get; set; }
+
+       /// <summary>
+       ///是否进行流程审批
+       /// </summary>
+       [Display(Name ="是否进行流程审批")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string sfxjlcsp { get; set; }
 
        /// <summary>
        ///异常原因
@@ -226,64 +235,6 @@ namespace VOL.Entity.DomainModels
        public DateTime? pingGuWanChengShiJian { get; set; }
 
        /// <summary>
-       ///创建人ID
-       /// </summary>
-       [Display(Name ="创建人ID")]
-       [Column(TypeName="int")]
-       [Editable(true)]
-       public int? CreateID { get; set; }
-
-       /// <summary>
-       ///申请时间
-       /// </summary>
-       [Display(Name ="申请时间")]
-       [Column(TypeName="datetime")]
-       [Editable(true)]
-       public DateTime? CreateDate { get; set; }
-
-       /// <summary>
-       ///修改人ID
-       /// </summary>
-       [Display(Name ="修改人ID")]
-       [Column(TypeName="int")]
-       [Editable(true)]
-       public int? ModifyID { get; set; }
-
-       /// <summary>
-       ///修改人
-       /// </summary>
-       [Display(Name ="修改人")]
-       [MaxLength(255)]
-       [Column(TypeName="nvarchar(255)")]
-       [Editable(true)]
-       public string Modifier { get; set; }
-
-       /// <summary>
-       ///修改时间
-       /// </summary>
-       [Display(Name ="修改时间")]
-       [Column(TypeName="datetime")]
-       [Editable(true)]
-       public DateTime? ModifyDate { get; set; }
-
-       /// <summary>
-       ///创建人
-       /// </summary>
-       [Display(Name ="创建人")]
-       [MaxLength(255)]
-       [Column(TypeName="nvarchar(255)")]
-       public string Creator { get; set; }
-
-       /// <summary>
-       ///是否进行流程审批
-       /// </summary>
-       [Display(Name ="是否进行流程审批")]
-       [MaxLength(50)]
-       [Column(TypeName="nvarchar(50)")]
-       [Editable(true)]
-       public string sfxjlcsp { get; set; }
-
-       /// <summary>
        ///内部变更评审是否进行
        /// </summary>
        [Display(Name ="内部变更评审是否进行")]
@@ -300,6 +251,56 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="nvarchar(500)")]
        [Editable(true)]
        public string bgzk { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="CreateID")]
+       [Column(TypeName="int")]
+       [Editable(true)]
+       public int? CreateID { get; set; }
+
+       /// <summary>
+       ///申请人
+       /// </summary>
+       [Display(Name ="申请人")]
+       [MaxLength(255)]
+       [Column(TypeName="nvarchar(255)")]
+       [Editable(true)]
+       public string Creator { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="CreateDate")]
+       [Column(TypeName="datetime")]
+       [Editable(true)]
+       public DateTime? CreateDate { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="ModifyID")]
+       [Column(TypeName="int")]
+       [Editable(true)]
+       public int? ModifyID { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="Modifier")]
+       [MaxLength(255)]
+       [Column(TypeName="nvarchar(255)")]
+       [Editable(true)]
+       public string Modifier { get; set; }
+
+       /// <summary>
+       ///
+       /// </summary>
+       [Display(Name ="ModifyDate")]
+       [Column(TypeName="datetime")]
+       [Editable(true)]
+       public DateTime? ModifyDate { get; set; }
 
        
     }
