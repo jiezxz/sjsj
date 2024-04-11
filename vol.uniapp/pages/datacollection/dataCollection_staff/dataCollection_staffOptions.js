@@ -6,16 +6,18 @@
 //************************************************ 
 export default function() {
 	return {
-		editFormFields: {"department":"","trueName":"","jobNumber":"","img":"","post":""},
-		editFormOptions: [{"key":"组织机构","data":[],"title":"部门","field":"department","type":"select"},
+		editFormFields: {"gongChang":"","department":"","trueName":"","jobNumber":"","img":"","post":""},
+		editFormOptions: [{"key":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},
+                               {"key":"组织机构","data":[],"title":"部门","field":"department","type":"select"},
                                {"title":"姓名","field":"trueName","type":"text"},
                                {"title":"工号","field":"jobNumber","type":"text"},
                                {"type":"group"},
                                {"key":"职务","data":[],"title":"职务","field":"post","type":"select"},
                                {"title":"照片","field":"img","type":"img"}],
-		searchFormFields: {"department":"","trueName":"","jobNumber":"","img":"","post":"","Creator":""},
-		searchFormOptions: [{"title":"照片","field":"img"},{"key":"职务","data":[],"title":"职务","field":"post","type":"select"},{"title":"创建人","field":"Creator"},{"type":"group"},{"title":"姓名","field":"trueName","type":"like"},{"title":"工号","field":"jobNumber","type":"like"},{"key":"组织机构","data":[],"title":"部门","field":"department","type":"select"}],
-		columns: [{field:'department',title:'部门',type:'string',bind:{ key:'组织机构',data:[]}},
+		searchFormFields: {"gongChang":"","department":"","trueName":"","jobNumber":"","img":"","post":"","Creator":""},
+		searchFormOptions: [{"title":"照片","field":"img"},{"key":"职务","data":[],"title":"职务","field":"post","type":"select"},{"title":"创建人","field":"Creator"},{"type":"group"},{"title":"姓名","field":"trueName","type":"like"},{"title":"工号","field":"jobNumber","type":"like"},{"key":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"key":"组织机构","data":[],"title":"部门","field":"department","type":"select"}],
+		columns: [{field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]}},
+                       {field:'department',title:'部门',type:'string',bind:{ key:'组织机构',data:[]}},
                        {field:'trueName',title:'姓名',type:'string'},
                        {field:'jobNumber',title:'工号',type:'string'},
                        {field:'img',title:'照片',type:'img'},

@@ -127,6 +127,18 @@
 				"navigationBarTitleText": "9S巡检"
 			}
 		}
+			,{
+			"path": "pages/datacollection/dataCollection_cjkb/dataCollection_cjkb",
+			"style": {
+				"navigationBarTitleText": "车间看板"
+			}
+		}
+			,{
+			"path": "pages/datacollection/dataCollection_tjyc/dataCollection_tjyc",
+			"style": {
+				"navigationBarTitleText": "停机&设备异常"
+			}
+		}
 	],
 "tabBar": { //设置要与第一个pages的path相同
 		"color": "#535353",

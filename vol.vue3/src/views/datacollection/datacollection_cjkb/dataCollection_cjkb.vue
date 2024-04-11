@@ -29,8 +29,9 @@
                 url: "/dataCollection_cjkb/",
                 sortName: "CreateDate"
             });
-            const editFormFields = ref({"shengChanXian":"","dingDanHao":"","guiGe":"","jrcqrs":"","ywgk":"","mj_rmb":"","mj_sj":"","mj_dcl":"","mj_dbzt":"","yzl_rmb":"","yzl_sj":"","yzl_dcl":"","yzl_dbzt":"","al_rmb":"","al_sj":"","al_dcl":"","al_dbzt":"","sl_rmb":"","sl_sj":"","sl_dcl":"","sl_dbzt":"","jrcqry":""});
-            const editFormOptions = ref([[{"dataKey":"产线-中文","data":[],"title":"生产线","field":"shengChanXian","type":"select"},
+            const editFormFields = ref({"gongChang":"","shengChanXian":"","dingDanHao":"","guiGe":"","jrcqrs":"","ywgk":"","mj_rmb":"","mj_sj":"","mj_dcl":"","mj_dbzt":"","yzl_rmb":"","yzl_sj":"","yzl_dcl":"","yzl_dbzt":"","al_rmb":"","al_sj":"","al_dcl":"","al_dbzt":"","sl_rmb":"","sl_sj":"","sl_dcl":"","sl_dbzt":"","jrcqry":""});
+            const editFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},
+                               {"dataKey":"产线-中文","data":[],"title":"生产线","field":"shengChanXian","type":"select"},
                                {"title":"订单号","field":"dingDanHao","type":"text"}],
                               [{"title":"今日出勤人数","field":"jrcqrs","type":"number"},
                                {"title":"规格","field":"guiGe","type":"text"},
@@ -52,10 +53,11 @@
                                {"title":"收率达成率","field":"sl_dcl","type":"decimal"},
                                {"dataKey":"上升下降","data":[],"title":"收率对比昨天","field":"sl_dbzt","type":"radio"}],
                               [{"title":"今日出勤人员","field":"jrcqry","colSize":12,"type":"textarea"}]]);
-            const searchFormFields = ref({"shengChanXian":[],"dingDanHao":"","guiGe":""});
-            const searchFormOptions = ref([[{"dataKey":"产线-中文","data":[],"title":"生产线","field":"shengChanXian","type":"selectList"},{"title":"订单号","field":"dingDanHao","type":"text"},{"title":"规格","field":"guiGe","type":"text"}]]);
-            const columns = ref([{field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
-                       {field:'shengChanXian',title:'生产线',type:'string',bind:{ key:'产线-中文',data:[]},width:110,align:'left',sort:true},
+            const searchFormFields = ref({"gongChang":"","shengChanXian":[],"dingDanHao":"","guiGe":""});
+            const searchFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"dataKey":"产线-中文","data":[],"title":"生产线","field":"shengChanXian","type":"selectList"},{"title":"订单号","field":"dingDanHao","type":"text"},{"title":"规格","field":"guiGe","type":"text"}]]);
+            const columns = ref([{field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left',sort:true},
+                       {field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
+                       {field:'shengChanXian',title:'生产线',type:'string',bind:{ key:'产线-中文',data:[]},width:110,align:'left'},
                        {field:'dingDanHao',title:'订单号',type:'string',width:120,align:'left'},
                        {field:'guiGe',title:'规格',type:'string',width:120,align:'left'},
                        {field:'jrcqrs',title:'今日出勤人数',type:'int',width:80,align:'left'},

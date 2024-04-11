@@ -17,10 +17,19 @@ namespace VOL.Entity.DomainModels
     public partial class dataCollection_9SInspection:BaseEntity
     {
         /// <summary>
-       ///
+       ///工厂
+       /// </summary>
+       [Display(Name ="工厂")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string gongChang { get; set; }
+
+       /// <summary>
+       ///编号
        /// </summary>
        [Key]
-       [Display(Name ="id")]
+       [Display(Name ="编号")]
        [Column(TypeName="int")]
        [Required(AllowEmptyStrings=false)]
        public int id { get; set; }

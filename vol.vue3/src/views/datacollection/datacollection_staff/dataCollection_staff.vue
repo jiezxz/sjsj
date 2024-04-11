@@ -29,15 +29,17 @@
                 url: "/dataCollection_staff/",
                 sortName: "CreateDate"
             });
-            const editFormFields = ref({"department":"","trueName":"","jobNumber":"","img":"","post":""});
-            const editFormOptions = ref([[{"dataKey":"组织机构","data":[],"title":"部门","field":"department","type":"select"},
+            const editFormFields = ref({"gongChang":"","department":"","trueName":"","jobNumber":"","img":"","post":""});
+            const editFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},
+                               {"dataKey":"组织机构","data":[],"title":"部门","field":"department","type":"select"},
                                {"title":"姓名","field":"trueName","type":"text"},
                                {"title":"工号","field":"jobNumber","type":"text"}],
                               [{"dataKey":"职务","data":[],"title":"职务","field":"post","type":"select"},
                                {"title":"照片","field":"img","type":"img"}]]);
-            const searchFormFields = ref({"department":"","trueName":"","jobNumber":""});
-            const searchFormOptions = ref([[{"title":"姓名","field":"trueName","type":"like"},{"title":"工号","field":"jobNumber","type":"like"},{"dataKey":"组织机构","data":[],"title":"部门","field":"department","type":"select"}]]);
-            const columns = ref([{field:'department',title:'部门',type:'string',bind:{ key:'组织机构',data:[]},width:120,align:'left',sort:true},
+            const searchFormFields = ref({"gongChang":"","department":"","trueName":"","jobNumber":""});
+            const searchFormOptions = ref([[{"title":"姓名","field":"trueName","type":"like"},{"title":"工号","field":"jobNumber","type":"like"},{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"dataKey":"组织机构","data":[],"title":"部门","field":"department","type":"select"}]]);
+            const columns = ref([{field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left',sort:true},
+                       {field:'department',title:'部门',type:'string',bind:{ key:'组织机构',data:[]},width:120,align:'left'},
                        {field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
                        {field:'trueName',title:'姓名',type:'string',width:110,align:'left'},
                        {field:'jobNumber',title:'工号',type:'string',width:110,align:'left'},

@@ -1,4 +1,3 @@
-using Newtonsoft.Json;
 /*
  *代码由框架生成,任何更改都可能导致被代码生成器覆盖
  *如果数据库字段发生变化，请在代码生器重新生成此Model
@@ -18,6 +17,15 @@ namespace VOL.Entity.DomainModels
     public partial class chanPinYiChangGuanLiQingDan:BaseEntity
     {
         /// <summary>
+       ///工厂
+       /// </summary>
+       [Display(Name ="工厂")]
+       [MaxLength(50)]
+       [Column(TypeName="varchar(50)")]
+       [Editable(true)]
+       public string gongChang { get; set; }
+
+       /// <summary>
        ///
        /// </summary>
        [Key]
@@ -25,15 +33,6 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="uniqueidentifier")]
        [Required(AllowEmptyStrings=false)]
        public Guid id { get; set; }
-
-       /// <summary>
-       ///公司
-       /// </summary>
-       [Display(Name ="公司")]
-       [MaxLength(50)]
-       [JsonIgnore]
-       [Column(TypeName="varchar(50)")]
-       public string gongSi { get; set; }
 
        /// <summary>
        ///车间

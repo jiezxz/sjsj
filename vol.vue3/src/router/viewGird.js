@@ -86,6 +86,10 @@ let viewgird = [
         path: '/dataCollection_9SInspection',
         name: 'dataCollection_9SInspection',
         component: () => import('@/views/datacollection/datacollection_9sinspection/dataCollection_9SInspection.vue')
+    }    ,{
+        path: '/dataCollection_AppVersion',
+        name: 'dataCollection_AppVersion',
+        component: () => import('@/views/datacollection/datacollection_appversion/dataCollection_AppVersion.vue')
     }]
 
 export default viewgird

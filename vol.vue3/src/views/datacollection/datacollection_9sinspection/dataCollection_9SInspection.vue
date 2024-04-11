@@ -29,10 +29,11 @@
                 url: "/dataCollection_9SInspection/",
                 sortName: "CreateDate"
             });
-            const editFormFields = ref({"xjsj":"","diDian":"","chanXian":"","wtms":"","yctp":"","sfcf":"","cqcs":"","gsbm":"","zrr":"","zgqx":"","zgjg":"","wczt":""});
-            const editFormOptions = ref([[{"title":"巡检日期","field":"xjsj","type":"date"},
+            const editFormFields = ref({"gongChang":"","xjsj":"","diDian":"","chanXian":"","wtms":"","yctp":"","sfcf":"","cqcs":"","gsbm":"","zrr":"","zgqx":"","zgjg":"","wczt":""});
+            const editFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"}],
+                              [{"title":"巡检日期","field":"xjsj","type":"date"},
                                {"title":"具体位置 ","field":"diDian","type":"text"},
-                               {"dataKey":"机台","data":[],"title":"车间/区域","field":"chanXian","type":"select"}],
+                               {"dataKey":"9S巡检区域SQL","data":[],"title":"车间/区域","field":"chanXian","type":"select"}],
                               [{"title":"问题描述","field":"wtms","type":"textarea"},
                                {"title":"异常图片","field":"yctp","type":"img"},
                                {"dataKey":"是否","data":[],"title":"重复发生2次指摘","field":"sfcf","type":"select"}],
@@ -42,12 +43,13 @@
                               [{"title":"整改期限","field":"zgqx","type":"datetime"},
                                {"title":"整改结果","field":"zgjg","type":"img"},
                                {"dataKey":"完成未完成","data":[],"title":"完成状态","field":"wczt","type":"select"}]]);
-            const searchFormFields = ref({"xjsj":"","diDian":"","chanXian":"","wtms":"","yctp":"","sfcf":"","wczt":""});
-            const searchFormOptions = ref([[{"title":"巡检日期","field":"xjsj","type":"date"},{"title":"具体位置 ","field":"diDian","type":"text"},{"dataKey":"机台","data":[],"title":"车间/区域","field":"chanXian","type":"select"}],[{"title":"问题描述","field":"wtms"},{"title":"异常图片","field":"yctp"},{"dataKey":"是否","data":[],"title":"重复发生2次指摘","field":"sfcf","type":"select"}],[{"dataKey":"完成未完成","data":[],"title":"完成状态","field":"wczt","type":"select"}]]);
-            const columns = ref([{field:'id',title:'编号',type:'int',width:110,readonly:true,require:true,align:'left',sort:true},
+            const searchFormFields = ref({"gongChang":"","xjsj":"","diDian":"","chanXian":"","wtms":"","yctp":"","sfcf":"","gsbm":"","zrr":"","wczt":""});
+            const searchFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"title":"巡检日期","field":"xjsj","type":"date"},{"title":"具体位置 ","field":"diDian","type":"text"},{"dataKey":"9S巡检区域SQL","data":[],"title":"车间/区域","field":"chanXian","type":"select"}],[{"title":"问题描述","field":"wtms"},{"title":"异常图片","field":"yctp"},{"dataKey":"是否","data":[],"title":"重复发生2次指摘","field":"sfcf","type":"select"}],[{"dataKey":"异常管理责任部门","data":[],"title":"改善部门","field":"gsbm","type":"select"},{"title":"责任人","field":"zrr","type":"like"},{"dataKey":"完成未完成","data":[],"title":"完成状态","field":"wczt","type":"select"}]]);
+            const columns = ref([{field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left',sort:true},
+                       {field:'id',title:'编号',type:'int',width:110,hidden:true,readonly:true,require:true,align:'left'},
                        {field:'xjsj',title:'巡检日期',type:'date',width:150,align:'left',sort:true},
                        {field:'diDian',title:'具体位置 ',type:'string',width:180,align:'left'},
-                       {field:'chanXian',title:'车间/区域',type:'string',bind:{ key:'机台',data:[]},width:110,align:'left'},
+                       {field:'chanXian',title:'车间/区域',type:'string',bind:{ key:'9S巡检区域SQL',data:[]},width:110,align:'left'},
                        {field:'wtms',title:'问题描述',type:'string',width:110,align:'left'},
                        {field:'yctp',title:'异常图片',type:'img',width:180,align:'left'},
                        {field:'sfcf',title:'重复发生2次指摘',type:'string',bind:{ key:'是否',data:[]},width:110,align:'left'},

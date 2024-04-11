@@ -17,6 +17,15 @@ namespace VOL.Entity.DomainModels
     public partial class dataCollection_staff:BaseEntity
     {
         /// <summary>
+       ///工厂
+       /// </summary>
+       [Display(Name ="工厂")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string gongChang { get; set; }
+
+       /// <summary>
        ///部门
        /// </summary>
        [Display(Name ="部门")]

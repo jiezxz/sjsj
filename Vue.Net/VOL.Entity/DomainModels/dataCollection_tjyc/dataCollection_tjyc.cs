@@ -27,6 +27,15 @@ namespace VOL.Entity.DomainModels
        public Guid id { get; set; }
 
        /// <summary>
+       ///工厂
+       /// </summary>
+       [Display(Name ="工厂")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string gongChang { get; set; }
+
+       /// <summary>
        ///生产线
        /// </summary>
        [Display(Name ="生产线")]
@@ -106,18 +115,18 @@ namespace VOL.Entity.DomainModels
        public string yuanYin { get; set; }
 
        /// <summary>
-       ///停机处理
+       ///处理方案
        /// </summary>
-       [Display(Name ="停机处理")]
+       [Display(Name ="处理方案")]
        [MaxLength(50)]
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
        public string chuLi { get; set; }
 
        /// <summary>
-       ///主动&异常
+       ///停机分类
        /// </summary>
-       [Display(Name ="主动&异常")]
+       [Display(Name ="停机分类")]
        [MaxLength(50)]
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]

@@ -18,6 +18,15 @@ namespace VOL.Entity.DomainModels
     public partial class dataCollection_cjkb:BaseEntity
     {
         /// <summary>
+       ///工厂
+       /// </summary>
+       [Display(Name ="工厂")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string gongChang { get; set; }
+
+       /// <summary>
        ///
        /// </summary>
        [Key]
