@@ -2,80 +2,34 @@
 	export default {
 		
 		
-		onLaunch: function() {
-		    console.log('App Show')
-		    plus.runtime.getProperty(plus.runtime.appid, function(widgetInfo) {
-		    this.version = widgetInfo.version
-		    uni.request({
-		        url: 'http://172.21.56.96:9099/api/dataCollection_AppVersion/GetPageData',
-		        success: (res) => {
-		            function compareVersion(version1, version2) {
-		                const newVersion1 = `${version1}`.split('.').length < 3 ? `${version1}`.concat('.0') : `${version1}`;
-		                const newVersion2 = `${version2}`.split('.').length < 3 ? `${version2}`.concat('.0') : `${version2}`;
-		                  //计算版本号大小,转化大小
-		                 function toNum(a){
-		                    const c = a.toString().split('.');
-		                    const num_place = ["", "0", "00", "000", "0000"],
-		                        r = num_place.reverse();
-		                    for (let i = 0; i < c.length; i++){
-		                        const len=c[i].length;
-		                        c[i]=r[len]+c[i];
-		                    }
-		                        return c.join('');
-		                    }
-		                    // 检测版本号是否需要更新
-		                    function checkPlugin(a, b) {
-		                        const numA = toNum(a);
-		                        const numB = toNum(b);
-		                        return numA > numB ? 1 : numA < numB ? -1 : 0;
-		                    }
-		                        return checkPlugin(newVersion1 ,newVersion2);
-		                    }
-		                    for (let i of res.data.content) {
-		                        if (i.description === 'app版本') {
-		                            // 1代表app新包版本号大于本地版本号
-		                            if (compareVersion(i.dictDetails[0].value, this.version) === 1) {
-		                                uni.showModal({
-		                                    title: '提示',
-		                                    content: '发现新的应用安装包，点击确定立即更新',
-		                                    success: function (res) {
-		                                       if (res.confirm) {
-		                                            console.log('用户点击确定');
-		                                            uni.showLoading({
-		                                                title: '更新中……'
-		                                            })
-		                                            uni.downloadFile({
-		                                                // 存放最新安装包的地址
-		                                                url: 'http://172.21.56.96:8099/other/apk/sjsj.apk',
-		                                                success: (downloadResult) => {  
-		                                                    uni.hideLoading();
-		                                                    if (downloadResult.statusCode === 200) { 
-		                                                        uni.hideLoading();
-		                                                        plus.runtime.install(downloadResult.tempFilePath,{ 
-		                                                            force: false
-		                                                        }, function() {
-		                                                            console.log('install success...');  
-		                                                            plus.runtime.restart();  
-		                                                        }, function(e) {  
-		                                                            uni.hideLoading();
-		                                                            console.error('install fail...');  
-		                                                        });  
-		                                                    }
-		                                                }  
-		                                            }); 
-		                                       } else if (res.cancel) {
-		                                            console.log('用户点击取消');
-		                                       }
-		                                    }
-		                                });
-		                            } else {
-		                        }
-		                    }
-		                 }
-		            }
-		        });
-		    });
-		}
+		onLaunch: function () {  
+		    //#ifdef APP-PLUS  
+		    var server = "http://172.21.56.96:9099/api/dataCollection_AppVersion/GetPageData"; //检查更新地址  
+		    var req = { //升级检测数据  
+		        // "appid": plus.runtime.appid,  
+		        // "version": plus.runtime.version  
+		    };  
+		    uni.request({  
+		        url: server,  
+		        data: req,  
+		        success: (res) =>{  
+		            if (res.rows[0].versionNo != plus.runtime.version) {  
+		                uni.showModal({ //提醒用户更新  
+		                    title: "更新提示",  
+		                    content: "发现新版本",  
+		                    success: (res) => {  
+		                        if (res.confirm) {  
+		                            plus.runtime.openURL("http://172.21.56.96:8099/other/apk/sjsj.apk");  
+		                        }  
+		                    }  
+		                })  
+		            }  
+		        }  
+		    })  
+		    //#endif  
+		}  
+		
+	 
 		  }
 </script>
 

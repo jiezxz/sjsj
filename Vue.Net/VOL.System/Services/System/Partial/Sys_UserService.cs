@@ -276,7 +276,8 @@ namespace VOL.System.Services
 
 
             ///生成6位数随机密码
-            string pwd = 6.GenerateRandomNumber();
+           // string pwd = 6.GenerateRandomNumber();
+            string pwd ="123456";
             //在AddOnExecuting之前已经对提交的数据做过验证是否为空
             base.AddOnExecuting = (Sys_User user, object obj) =>
             {

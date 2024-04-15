@@ -142,26 +142,26 @@ namespace VOL.Entity.DomainModels
        public string tiaoZhengHouCanShu { get; set; }
 
        /// <summary>
-       ///重要度
+       ///重要度（产线动作不填）
        /// </summary>
-       [Display(Name ="重要度")]
+       [Display(Name ="重要度（产线动作不填）")]
        [Column(TypeName="int")]
        [Editable(true)]
        public int? zhongYaoDao { get; set; }
 
        /// <summary>
-       ///变更项目
+       ///变更项目（产线动作不填）
        /// </summary>
-       [Display(Name ="变更项目")]
+       [Display(Name ="变更项目（产线动作不填）")]
        [MaxLength(16)]
        [Column(TypeName="text(16)")]
        [Editable(true)]
        public string bianGengXiangMu { get; set; }
 
        /// <summary>
-       ///控制形式
+       ///控制形式（产线动作不填）
        /// </summary>
-       [Display(Name ="控制形式")]
+       [Display(Name ="控制形式（产线动作不填）")]
        [Column(TypeName="int")]
        [Editable(true)]
        public int? kongZhiXingShi { get; set; }

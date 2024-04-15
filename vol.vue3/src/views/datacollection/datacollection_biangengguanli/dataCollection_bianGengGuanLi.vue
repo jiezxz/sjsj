@@ -43,9 +43,9 @@
                                {"title":"指标及缺陷","field":"tzyxdxgzbjqx","type":"textarea"},
                                {"title":"调整前参数","field":"tiaoZhengQianCanShu","type":"textarea"}],
                               [{"title":"调整后参数","field":"tiaoZhengHouCanShu","type":"textarea"},
-                               {"dataKey":"重要度","data":[],"title":"重要度","field":"zhongYaoDao","type":"select"},
-                               {"title":"变更项目","field":"bianGengXiangMu","type":"textarea"}],
-                              [{"dataKey":"控制形式","data":[],"title":"控制形式","field":"kongZhiXingShi","type":"select"},
+                               {"dataKey":"重要度","data":[],"title":"重要度（产线动作不填）","field":"zhongYaoDao","type":"select"},
+                               {"title":"变更项目（产线动作不填）","field":"bianGengXiangMu","type":"textarea"}],
+                              [{"dataKey":"控制形式","data":[],"title":"控制形式（产线动作不填）","field":"kongZhiXingShi","type":"select"},
                                {"title":"起始批号","field":"qiShiPiHao","type":"text"},
                                {"title":"接收日期","field":"jieShouRiQi","type":"date"}],
                               [{"title":"接收时间","field":"jieShouShiJian","type":"time"},
@@ -58,7 +58,7 @@
                                {"dataKey":"是否","data":[],"title":"内部变更评审是否进行","field":"nbbgpssfjx","type":"select"},
                                {"title":"变更状况","field":"bgzk","type":"textarea"}]]);
             const searchFormFields = ref({"gongChang":"","gongXu":"","shengChanXian":[],"xingHao":"","tiaoZhengRiQi":"","lianLuoShiYou":"","zhongYaoDao":""});
-            const searchFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"dataKey":"工序","data":[],"title":"工序","field":"gongXu","type":"select"},{"dataKey":"产线SQL","data":[],"title":"生产线","field":"shengChanXian","type":"selectList"},{"title":"型号","field":"xingHao"}],[{"dataKey":"重要度","data":[],"title":"重要度","field":"zhongYaoDao","type":"select"},{"title":"调整日期","field":"tiaoZhengRiQi","type":"date"},{"dataKey":"联络事由","data":[],"title":"联络事由","field":"lianLuoShiYou","type":"select"}]]);
+            const searchFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"dataKey":"工序","data":[],"title":"工序","field":"gongXu","type":"select"},{"dataKey":"产线SQL","data":[],"title":"生产线","field":"shengChanXian","type":"selectList"},{"title":"型号","field":"xingHao"}],[{"dataKey":"重要度","data":[],"title":"重要度（产线动作不填）","field":"zhongYaoDao","type":"select"},{"title":"调整日期","field":"tiaoZhengRiQi","type":"date"},{"dataKey":"联络事由","data":[],"title":"联络事由","field":"lianLuoShiYou","type":"select"}]]);
             const columns = ref([{field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left',sort:true},
                        {field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
                        {field:'gongXu',title:'工序',type:'int',bind:{ key:'工序',data:[]},width:110,align:'left'},
@@ -73,9 +73,9 @@
                        {field:'tzyxdxgzbjqx',title:'指标及缺陷',type:'string',width:110,align:'left'},
                        {field:'tiaoZhengQianCanShu',title:'调整前参数',type:'string',width:110,align:'left'},
                        {field:'tiaoZhengHouCanShu',title:'调整后参数',type:'string',width:110,align:'left'},
-                       {field:'zhongYaoDao',title:'重要度',type:'int',bind:{ key:'重要度',data:[]},width:110,align:'left'},
-                       {field:'bianGengXiangMu',title:'变更项目',type:'string',width:110,align:'left'},
-                       {field:'kongZhiXingShi',title:'控制形式',type:'int',bind:{ key:'控制形式',data:[]},width:110,align:'left'},
+                       {field:'zhongYaoDao',title:'重要度（产线动作不填）',type:'int',bind:{ key:'重要度',data:[]},width:110,align:'left'},
+                       {field:'bianGengXiangMu',title:'变更项目（产线动作不填）',type:'string',width:110,align:'left'},
+                       {field:'kongZhiXingShi',title:'控制形式（产线动作不填）',type:'int',bind:{ key:'控制形式',data:[]},width:110,align:'left'},
                        {field:'qiShiPiHao',title:'起始批号',type:'string',width:110,align:'left'},
                        {field:'jieShouRiQi',title:'接收日期',type:'datetime',width:150,align:'left',sort:true},
                        {field:'jieShouShiJian',title:'接收时间',type:'string',width:110,align:'left'},
