@@ -17,6 +17,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using DataCollection.IRepositories;
+using System;
 
 namespace DataCollection.Services
 {
@@ -37,5 +38,55 @@ namespace DataCollection.Services
             //多租户会用到这init代码，其他情况可以不用
             //base.Init(dbRepository);
         }
-  }
+        WebResponseContent webResponse = new WebResponseContent();
+        /// <summary>
+        /// 新建
+        /// </summary>
+        /// <param name="dataCollection_9SInspection"></param>
+        /// <returns></returns>
+        public override WebResponseContent Add(SaveModel saveDataModel)
+        {
+
+            // 在保存数据库前的操作，所有数据都验证通过了，这一步执行完就执行数据库保存
+            AddOnExecuting = (dataCollection_9SInspection m, object list) =>
+            {
+                m.DocumentNumber = GetOrderNo(m.gongChang);
+
+                return webResponse.OK();
+            };
+
+            return base.Add(saveDataModel);
+        }
+
+
+        public string GetOrderNo(string gongChang)
+        {
+            string rule = "";
+            if (gongChang == "重庆恩捷新材料")
+            {
+                rule = "CQEJ-E01-";
+            }
+            if (gongChang == "重庆恩捷纽米")
+            {
+                rule = "CQNM-E01-";
+            }
+            //lock/redis自增
+            DateTime dateNow = (DateTime)DateTime.Now.ToString("yyyy-MM-dd").GetDateTime();//查询当天最新的订单号string orderiiomrepository,FindAsIQueryable(x>x.CreateDate > dateNow).0rderByDescending(x=>x.0rderNo).Select(s =>s.0rderNo).FirstorDefault():string rule = $"D lateTime, Nor,ToString("yyyy!!dd")}"if(string,IsMu110rEmpty(orderNo))
+            rule += dateNow.ToString("yyyyMMdd") + "-";
+            string DocumentNumber = repository.FindAsIQueryable(x => x.CreateDate > dateNow && x.gongChang == gongChang)
+                .OrderByDescending(x => x.DocumentNumber)
+                .Select(s => s.DocumentNumber)
+                .FirstOrDefault();
+            if (string.IsNullOrEmpty(DocumentNumber))
+            {
+                rule += "001";
+            }
+            else
+            {
+                rule += (DocumentNumber.Substring(DocumentNumber.Length - 3).GetInt() + 1).ToString("000");
+            }
+
+            return rule;
+        }
+    }
 }

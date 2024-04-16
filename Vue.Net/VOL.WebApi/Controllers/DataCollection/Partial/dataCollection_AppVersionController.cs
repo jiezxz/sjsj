@@ -36,7 +36,7 @@ namespace DataCollection.Controllers
         [HttpPost, Route("GetPageData"), AllowAnonymous]
         public override ActionResult GetPageData([FromBody] PageDataOptions loadData)
         {
-            loadData.Rows = 1;
+         
             return base.GetPageData(loadData);
 
         }
