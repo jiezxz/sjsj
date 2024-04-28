@@ -282,15 +282,6 @@ namespace VOL.Entity.DomainModels
        public DateTime? ModifyDate { get; set; }
 
        /// <summary>
-       ///内部变更评审是否进行
-       /// </summary>
-       [Display(Name ="内部变更评审是否进行")]
-       [MaxLength(50)]
-       [Column(TypeName="nvarchar(50)")]
-       [Editable(true)]
-       public string nbbgpssfjx { get; set; }
-
-       /// <summary>
        ///是否进行流程审批
        /// </summary>
        [Display(Name ="是否进行流程审批")]
@@ -298,6 +289,15 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
        public string sfxjlcsp { get; set; }
+
+       /// <summary>
+       ///内部变更评审是否进行
+       /// </summary>
+       [Display(Name ="内部变更评审是否进行")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string nbbgpssfjx { get; set; }
 
        /// <summary>
        ///变更状况

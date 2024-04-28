@@ -39,8 +39,8 @@
                               [{"dataKey":"gender","data":[],"title":"性别","field":"Gender","type":"select"}],
                               [{"title":"备注","field":"Remark","colSize":12,"type":"textarea"}],
                               [{"title":"头像","field":"HeadImageUrl","type":"img"}]]);
-            const searchFormFields = ref({"UserName":"","UserTrueName":"","Gender":"","DeptName":"","Role_Id":[],"Token":"","AppType":[],"CreateDate":"","IsRegregisterPhone":"","PhoneNo":"","Enable":"","LastLoginDate":"","Address":"","Email":""});
-            const searchFormOptions = ref([[{"title":"帐号","field":"UserName"},{"title":"姓名","field":"UserTrueName"},{"dataKey":"gender","data":[],"title":"性别","field":"Gender","type":"select"}],[{"title":"不用","field":"DeptName"},{"dataKey":"tree_roles","data":[],"title":"角色","field":"Role_Id","type":"select"},{"title":"Token","field":"Token"}],[{"dataKey":"ut","data":[],"title":"类型","field":"AppType","type":"selectList"},{"dataKey":"isphone","data":[],"title":"手机用户","field":"IsRegregisterPhone","type":"select"},{"title":"手机号","field":"PhoneNo"}],[{"dataKey":"enable","data":[],"title":"是否可用","field":"Enable","type":"select"},{"title":"地址","field":"Address"},{"title":"Email","field":"Email"}],[{"title":"注册时间","field":"CreateDate","type":"datetime"},{"title":"最后登陆时间","field":"LastLoginDate","type":"datetime"}]]);
+            const searchFormFields = ref({"UserName":"","UserTrueName":"","Gender":"","DeptName":"","Role_Id":[],"Token":"","AppType":[],"DeptIds":"","CreateDate":"","IsRegregisterPhone":"","PhoneNo":"","Enable":"","LastLoginDate":"","Address":"","Email":""});
+            const searchFormOptions = ref([[{"title":"帐号","field":"UserName"},{"title":"姓名","field":"UserTrueName"},{"dataKey":"gender","data":[],"title":"性别","field":"Gender","type":"select"},{"dataKey":"组织机构","data":[],"title":"组织构架","field":"DeptIds","type":"cascader"}],[{"title":"不用","field":"DeptName"},{"dataKey":"tree_roles","data":[],"title":"角色","field":"Role_Id","type":"select"},{"title":"Token","field":"Token"}],[{"dataKey":"ut","data":[],"title":"类型","field":"AppType","type":"selectList"},{"dataKey":"isphone","data":[],"title":"手机用户","field":"IsRegregisterPhone","type":"select"},{"title":"手机号","field":"PhoneNo"}],[{"dataKey":"enable","data":[],"title":"是否可用","field":"Enable","type":"select"},{"title":"地址","field":"Address"},{"title":"Email","field":"Email"}],[{"title":"注册时间","field":"CreateDate","type":"datetime"},{"title":"最后登陆时间","field":"LastLoginDate","type":"datetime"}]]);
             const columns = ref([{field:'User_Id',title:'User_Id',type:'int',width:90,hidden:true,readonly:true,require:true,align:'left'},
                        {field:'UserName',title:'帐号',type:'string',link:true,width:120,readonly:true,require:true,align:'left',sort:true},
                        {field:'UserTrueName',title:'姓名',type:'string',width:120,require:true,align:'left'},
@@ -52,7 +52,7 @@
                        {field:'RoleName',title:'不用',type:'string',width:90,hidden:true,align:'left'},
                        {field:'Token',title:'Token',type:'string',width:180,hidden:true,align:'left'},
                        {field:'AppType',title:'类型',type:'int',bind:{ key:'ut',data:[]},width:150,hidden:true,align:'left'},
-                       {field:'DeptIds',title:'组织构架',type:'string',bind:{ key:'组织机构',data:[]},width:140,hidden:true,align:'left'},
+                       {field:'DeptIds',title:'组织构架',type:'string',bind:{ key:'组织机构',data:[]},width:140,align:'left'},
                        {field:'CreateDate',title:'注册时间',type:'datetime',width:150,readonly:true,align:'left',sort:true},
                        {field:'IsRegregisterPhone',title:'手机用户',type:'int',bind:{ key:'isphone',data:[]},width:120,hidden:true,align:'left'},
                        {field:'PhoneNo',title:'手机号',type:'string',width:150,hidden:true,align:'left'},

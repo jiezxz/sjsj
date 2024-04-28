@@ -139,6 +139,12 @@
 				"navigationBarTitleText": "停机&设备异常"
 			}
 		}
+			,{
+			"path": "pages/datacollection/DataCollection_TaskList/DataCollection_TaskList",
+			"style": {
+				"navigationBarTitleText": "部门任务清单"
+			}
+		}
 	],
 "tabBar": { //设置要与第一个pages的path相同
 		"color": "#535353",

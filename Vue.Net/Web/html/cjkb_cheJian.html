@@ -40,9 +40,10 @@
         }
 
         .title {
-            font-size: 30px;
             font-weight: bold;
             background-color: steelblue;
+            font-size: 40px;
+            color: #fff;
         }
         .number{
             font-size: 60px;
@@ -74,16 +75,20 @@
     <table>
         <thead>
             <tr>
-                <td colspan="5" class="title">生产数据</td>
+                <td colspan="5" class="title"  >
+                <span id="year"></span><span id="t_year">年</span>
+                <span id="month"></span><span id="t_month">月</span>
+                <span id="day"></span><span id="t_day">日</span>
+                                      <span id="t_scqk">生产情况</span> </td>
             </tr>
         </thead>
         <tbody>
             <tr style="    background-color: aliceblue;font-weight: bold;"  class="title1">
-                <td >产线</td>
-                <td >订单号</td>
-                <td >规格</td>
-                <td >今日出勤人数</td>
-                <td >异物管控</td>
+                <td id="t_cx">产线</td>
+                <td  id="t_ddh">订单号</td>
+                <td  id="t_gg">规格</td>
+                <td  id="t_jrcqrs">今日出勤人数</td>
+                <td  id="t_ywgk">异物管控</td>
             </tr>
             <tr>
                 <td id="shengChanXian"></td>
@@ -94,14 +99,14 @@
             </tr>
             <tr style="    background-color: khaki;
         font-weight: bold;" class="title1">
-                <td>项目</td>
-                <td>日目标</td>
-                <td>实绩</td>
-                <td>达成率</td>
-                <td>对比昨天</td>
+                <td id="t_xm">项目</td>
+                <td id="t_rmb">日目标</td>
+                <td id="t_sj">实绩</td>
+                <td id="t_dc">达成率</td>
+                <td id="t_dbzt">对比昨天</td>
             </tr>
             <tr>
-                <td>母卷(wm²)</td>
+                <td><span  id="t_mj">母卷</span>(wm²)</td>
                 <td id="mj_rmb" class="pingfang number"> </td>
                 <td id="mj_sj" class=" bold"></td>
                 <td id="mj_dcl" class="baifen bold"></td>
@@ -109,7 +114,7 @@
             </tr>
 
             <tr>
-                <td>运转率(%)</td>
+                <td><span id="t_yzl">运转率</span>(%)</td>
                 <td id="yzl_rmb" class="baifen number"> </td>
                 <td id="yzl_sj" class="baifen bold"></td>
                 <td id="yzl_dcl" class="baifen bold"></td>
@@ -117,21 +122,21 @@
             </tr>
 
             <tr>
-                <td>A率 (%)</td>
+                <td><span id="t_al">A率</span> (%)</td>
                 <td id="al_rmb" class="baifen number"> </td>
                 <td id="al_sj" class="baifen bold"></td>
                 <td id="al_dcl" class="baifen bold"></td>
                 <td id="al_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
             </tr>
             <tr>
-                <td>收率 (%)</td>
+                <td> <span id="t_sl">收率</span> (%)</td>
                 <td id="sl_rmb" class="baifen number"> </td>
                 <td id="sl_sj" class="baifen bold"></td>
                 <td id="sl_dcl" class="baifen bold"></td>
                 <td id="sl_dbzt" class="bold" style=" transform: scale(2, 1);"></td>
             </tr>
             <tr>
-                <td>今日出勤人员</td>
+                <td  id="t_jrcqry">今日出勤人员</td>
                 <td colspan="4" id="jrcqry" style="text-align: left;">
                 
                 </td>
@@ -147,7 +152,8 @@
         if (r != null) return unescape(r[2]); return null;// 
     }
     var shengChanXian=getUrlParam("shengChanXian").split(',');
-    var index=0;
+    var index = 0;
+
     var init = function (cx) {
         var params = { "page": 1, "rows": 1, "sort": "CreateDate", "order": "desc", "wheres": '[{"name":"shengChanXian","value":"' + shengChanXian[index] + '","displayType":"text"}]' };
         $.ajax({
@@ -164,7 +170,12 @@
                 }
                 var obj = result.rows[0];
                 if (obj) {
-                    $(".title").text(new Date(obj.CreateDate).getFullYear() + "年" + (parseInt(new Date(obj.CreateDate).getMonth()) + 1) + "月" + new Date(obj.CreateDate).getDate() + "日生产数据");
+                    $("#year").text(new Date(obj.CreateDate).getFullYear());
+                    $("#month").text((parseInt(new Date(obj.CreateDate).getMonth()) + 1));
+                    $("#day").text(new Date(obj.CreateDate).getDate());
+
+
+                  //  $(".title").text(new Date(obj.CreateDate).getFullYear() + "年" + (parseInt(new Date(obj.CreateDate).getMonth()) + 1) + "月" + new Date(obj.CreateDate).getDate() + "日生产数据");
                     $("[id]").each(function () {
                         var id = $(this).attr('id');
                         if (id !== "") {
@@ -250,8 +261,45 @@
 
         });
     }
+    var strList = [
+        { "key": "t_year", "c": "年", "h": "년" },
+        { "key": "t_month", "c": "月", "h": "월" },
+        { "key": "t_day", "c": "日", "h": "일" },
+        { "key": "t_scqk", "c": "生产情况", "h": "생산일람표" },
+        { "key": "t_cx", "c": "产线", "h": "라인" },
+        { "key": "t_ddh", "c": "订单号", "h": "PO NO" },
+        { "key": "t_gg", "c": "规格", "h": "규격" },
+        { "key": "t_jrcqrs", "c": "今日出勤人数", "h": "금일출근인원수" },
+        { "key": "t_ywgk", "c": "异物管控", "h": "이물관리" },
+        { "key": "t_xm", "c": "项目", "h": "프로그램" },
+        { "key": "t_rmb", "c": "日目标", "h": "일목표" },
+        { "key": "t_sj", "c": "实际", "h": "실적" },
+        { "key": "t_dc", "c": "达成率", "h": "달성율" },
+        { "key": "t_dbzt", "c": "对比昨天", "h": "전일대비" },
+        { "key": "t_mj", "c": "母卷", "h": "원단" },
+        { "key": "t_yzl", "c": "运转率", "h": "가동율" },
+        { "key": "t_al", "c": "A率", "h": "A급" },
+        { "key": "t_sl", "c": "收率", "h": "수율" },
+        { "key": "t_jrcqry", "c": "今日出勤人员", "h": "금일근무인원" }
+    ]
+    var tabIndex = 0;
+    var tab = function () {
+        $(strList).each(function () {
+            if (tabIndex == 0) {
+                $("#"+this.key).text(this.h);
+            } else {
+                $("#" + this.key).text(this.c);
+            }
+           
 
- 
+        });
+        if (tabIndex == 0) {
+            tabIndex = 1;
+        } else {
+            tabIndex = 0;
+        }
+
+    }
 
 
   
@@ -261,7 +309,18 @@
         setInterval(function () {
             // 执行的代码块
             init();
-        }, 60000);
+        }, 30000);
+
+        if (getUrlParam("shengChanXian") == "CI,CJ,CK") {
+
+        // 每隔10秒执行一次函数
+        setInterval(function () {
+            // 执行的代码块
+            tab();
+        }, 10000);
+        }
+
+
     });
 
 </script>

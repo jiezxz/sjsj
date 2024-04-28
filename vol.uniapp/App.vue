@@ -24,7 +24,7 @@
 							console.log("提示更新");
 							uni.showModal({ //提醒用户更新  
 								title: "更新提示",
-								content: "发现新版本",
+								content: "发现新版本,本次更新内容："+res.data.rows[0].Remarks,
 								success: (res) => {
 									if (res.confirm) {
 										//  plus.runtime.openURL("http://172.21.56.96:8099/other/apk/sjsj.apk");  

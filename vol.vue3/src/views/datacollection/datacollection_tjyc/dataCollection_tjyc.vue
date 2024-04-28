@@ -29,8 +29,9 @@
                 url: "/dataCollection_tjyc/",
                 sortName: "CreateDate"
             });
-            const editFormFields = ref({"gongChang":"","scx":"","riQi":"","banZhu":"","banZhang":"","banCi":"","ciShu":"","weiZhi":"","daiHao":"","yuanYin":"","chuLi":"","zdyc":"","tjsj":"","qjwc":"","cmwc":"","tswc":"","tisoShiWC":"","sjsj":"","tzwxsj":"","wxzcsj":"","cyry":""});
-            const editFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},
+            const editFormFields = ref({"DocumentNumber":"","gongChang":"","scx":"","riQi":"","banZhu":"","banZhang":"","banCi":"","ciShu":"","weiZhi":"","daiHao":"","yuanYin":"","chuLi":"","zdyc":"","tjsj":"","qjwc":"","cmwc":"","tswc":"","tisoShiWC":"","sjsj":"","tzwxsj":"","wxzcsj":"","cyry":""});
+            const editFormOptions = ref([[{"title":"文件编号","field":"DocumentNumber","disabled":true},
+                               {"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},
                                {"dataKey":"产线-中文","data":[],"title":"生产线","field":"scx","type":"select"},
                                {"title":"日期","field":"riQi","type":"date"}],
                               [{"dataKey":"生产班长","data":[],"title":"班长","field":"banZhang","type":"select"},
@@ -51,10 +52,11 @@
                               [{"title":"通知维修时间","field":"tzwxsj","type":"datetime"},
                                {"title":"维修正常时间","field":"wxzcsj","type":"datetime"}],
                               [{"title":"参与人员","field":"cyry","colSize":12,"type":"textarea"}]]);
-            const searchFormFields = ref({"gongChang":""});
-            const searchFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"}]]);
-            const columns = ref([{field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
-                       {field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left',sort:true},
+            const searchFormFields = ref({"DocumentNumber":"","gongChang":""});
+            const searchFormOptions = ref([[{"title":"文件编号","field":"DocumentNumber","type":"like"},{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"}]]);
+            const columns = ref([{field:'DocumentNumber',title:'文件编号',type:'string',width:120,readonly:true,align:'left',sort:true},
+                       {field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
+                       {field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left'},
                        {field:'scx',title:'生产线',type:'string',bind:{ key:'产线-中文',data:[]},width:110,align:'left'},
                        {field:'riQi',title:'日期',type:'date',width:150,align:'left',sort:true},
                        {field:'banZhu',title:'班主',type:'string',bind:{ key:'班主',data:[]},width:110,align:'left'},

@@ -255,6 +255,14 @@ namespace VOL.Entity.DomainModels
        [Editable(true)]
        public string cyry { get; set; }
 
+       /// <summary>
+       ///文件编号
+       /// </summary>
+       [Display(Name ="文件编号")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       public string DocumentNumber { get; set; }
+
        
     }
 }

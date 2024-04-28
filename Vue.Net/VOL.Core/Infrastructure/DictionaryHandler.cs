@@ -31,12 +31,14 @@ namespace VOL.Core.Infrastructure
                 case "tree_roles":
                     originalSql = GetRolesSql(originalSql);
                     break;
+
+           
                 default:
                     break;
             }
             return originalSql;
         }
-
+       
         /// <summary>
         /// 获取解决的数据源，只能看到自己与下级所有角色
         /// </summary>

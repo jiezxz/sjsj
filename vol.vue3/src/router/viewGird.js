@@ -90,6 +90,10 @@ let viewgird = [
         path: '/dataCollection_AppVersion',
         name: 'dataCollection_AppVersion',
         component: () => import('@/views/datacollection/datacollection_appversion/dataCollection_AppVersion.vue')
+    }    ,{
+        path: '/DataCollection_TaskList',
+        name: 'DataCollection_TaskList',
+        component: () => import('@/views/datacollection/datacollection_tasklist/DataCollection_TaskList.vue')
     }]
 
 export default viewgird

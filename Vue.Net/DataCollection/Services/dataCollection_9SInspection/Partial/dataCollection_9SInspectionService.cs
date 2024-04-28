@@ -42,7 +42,7 @@ namespace DataCollection.Services
         /// <summary>
         /// 新建
         /// </summary>
-        /// <param name="dataCollection_9SInspection"></param>
+        /// <param name="Add"></param>
         /// <returns></returns>
         public override WebResponseContent Add(SaveModel saveDataModel)
         {
@@ -64,26 +64,29 @@ namespace DataCollection.Services
             string rule = "";
             if (gongChang == "重庆恩捷新材料")
             {
-                rule = "CQEJ-E01-";
+                rule = "CQEJ-E001-";
             }
             if (gongChang == "重庆恩捷纽米")
             {
-                rule = "CQNM-E01-";
+                rule = "CQNM-E001-";
             }
-            //lock/redis自增
-            DateTime dateNow = (DateTime)DateTime.Now.ToString("yyyy-MM-dd").GetDateTime();//查询当天最新的订单号string orderiiomrepository,FindAsIQueryable(x>x.CreateDate > dateNow).0rderByDescending(x=>x.0rderNo).Select(s =>s.0rderNo).FirstorDefault():string rule = $"D lateTime, Nor,ToString("yyyy!!dd")}"if(string,IsMu110rEmpty(orderNo))
-            rule += dateNow.ToString("yyyyMMdd") + "-";
-            string DocumentNumber = repository.FindAsIQueryable(x => x.CreateDate > dateNow && x.gongChang == gongChang)
-                .OrderByDescending(x => x.DocumentNumber)
-                .Select(s => s.DocumentNumber)
-                .FirstOrDefault();
-            if (string.IsNullOrEmpty(DocumentNumber))
+            lock (this)
             {
-                rule += "001";
-            }
-            else
-            {
-                rule += (DocumentNumber.Substring(DocumentNumber.Length - 3).GetInt() + 1).ToString("000");
+                //lock/redis自增
+                DateTime dateNow = (DateTime)DateTime.Now.ToString("yyyy-MM-dd").GetDateTime();//查询当天最新的单号string orderiiomrepository,FindAsIQueryable(x>x.CreateDate > dateNow).0rderByDescending(x=>x.0rderNo).Select(s =>s.0rderNo).FirstorDefault():string rule = $"D lateTime, Nor,ToString("yyyy!!dd")}"if(string,IsMu110rEmpty(orderNo))
+                rule += dateNow.ToString("yyMMdd") + "-";
+                string DocumentNumber = repository.FindAsIQueryable(x => x.CreateDate > dateNow && x.gongChang == gongChang)
+                    .OrderByDescending(x => x.DocumentNumber)
+                    .Select(s => s.DocumentNumber)
+                    .FirstOrDefault();
+                if (string.IsNullOrEmpty(DocumentNumber))
+                {
+                    rule += "001";
+                }
+                else
+                {
+                    rule += (DocumentNumber.Substring(DocumentNumber.Length - 3).GetInt() + 1).ToString("000");
+                }
             }
 
             return rule;

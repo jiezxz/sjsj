@@ -1,0 +1,257 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>部门任务清单</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            width: 8%;
+            position: fixed;
+            overflow: auto;
+        }
+
+       th {
+            text-align: center !important
+        }
+
+        li a {
+            display: block;
+            color: #000;
+            padding: 8px 16px;
+            text-decoration: none !important;
+        }
+
+            li a.active {
+                background-color: #2d8cf0;
+                color: white;
+            }
+        btn-info {
+            background-color: #2d8cf0 !important;
+        }
+        .btn-info.active {
+            background-color: #2d8cf0 !important;
+        }
+        li a:hover:not(.active) {
+            background-color: #c9d5e2;
+            color: white;
+        }
+    </style>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="js/jp-paginator/jq-paginator.js"></script>
+
+    <link href="js/jp-paginator/jp-paginator.css" rel="stylesheet" />
+</head>
+<body>
+    <div style="text-align: center; font-size: 25px; font-weight: bold; margin:10px">部门任务清单</div>
+    <ul id="buMenList" style=" background-color: #F8F8F8; height: 100%;">
+        <li><a class="active" href="#全部">全部</a></li>
+        <li><a href="#总经办">总经办</a></li>
+        <li><a href="#生产部">生产部</a></li>
+        <li><a href="#品质部">品质部</a></li>
+        <li><a href="#设备部">设备部</a></li>
+        <li><a href="#研发技术部">研发技术部</a></li>
+        <li><a href="#财务部">财务部</a></li>
+        <li><a href="#安全环保部">安全环保部</a></li>
+        <li><a href="#业助部">业助部</a></li>
+        <li><a href="#仓储部">仓储部</a></li>
+        <li><a href="#综合管理部">综合管理部</a></li>
+        <li><a href="#人力资源部">人力资源部</a></li>
+        <li><a href="#采购部">采购部</a></li>
+        <li><a href="#信息技术部">信息技术部</a></li>
+
+
+    </ul>
+
+    <div style="margin-left:8%;padding:1px 16px;">
+        <div>
+            启动状态：
+            <button type="button" class="btn btn-info btn-sm active StartSsatus" onclick="changeStartSsatus('全部')">全部</button>
+            <button type="button" class="btn  btn-sm active StartSsatus" onclick="changeStartSsatus('启动')">启动</button>
+            <button type="button" class="btn  btn-sm active StartSsatus" onclick="changeStartSsatus('未启动')">未启动</button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            进行状态：
+            <button type="button" class="btn btn-info btn-sm active Status" onclick="changeStatus('全部')">全部</button>
+            <button type="button" class="btn  btn-sm active Status" onclick="changeStatus('未开始')">未开始</button>
+            <button type="button" class="btn  btn-sm active Status" onclick="changeStatus('进行中')">进行中</button>
+            <button type="button" class="btn  btn-sm active Status" onclick="changeStatus('已完成')">已完成</button>
+        </div>
+        <br />
+        <table class="table table-bordered" >
+            <thead>
+               
+                <tr style="background-color: #F8F8F8">
+                    <th style="width:90px">部门</th>
+                    <th style="width:90px">进行状态</th>
+                    <th style="width:90px">责任人</th>
+                    <th style="width:150px">任务名称</th>
+                    <th style="width:300px">任务内容</th>
+                    <th style="width:90px">启动状态</th>
+                    <th style="width:90px">提出时间</th>
+                    <th style="width:150px">进度描述</th>
+                    <th style="width:90px">开始时间</th>
+                    <th style="width:90px">截止时间</th>
+                    <th style="width:90px">完成时间</th>
+                    <th style="width:90px">佐证资料</th>
+                </tr>
+            </thead>
+
+            <tbody id="tab"></tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="11" style="height:50px">
+                        <ul class="pagination" id="pagination1" style="width: 100%; display: contents;"></ul>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    
+    </div>
+    <script>
+        var currentPage = 1; //当前页
+        var pageSize = 10;//每页数据调试
+        var sunCount = 0;
+        var Status = "";
+        var StartSsatus = "";
+        var Status = "";
+        var search = window.location.href;
+        var params = search.substr(1).split('#')[1];
+        BuMen = decodeURIComponent(search.substr(1).split('#')[1]);  //获取URL#后面的部门
+
+      var host = "http://127.0.0.1:9991/";
+        //  var host = "http://172.21.56.96:9099/";
+        var init = function () {
+            $("#tab").html("");
+        
+            var wheres = [];
+            if (BuMen != "" && BuMen != "全部") {
+                wheres.push({"name":"BuMen","value":"" + BuMen + "","displayType":"select"});
+            }
+            if (StartSsatus != "" && StartSsatus != "全部") {
+                wheres.push({ "name": "StartSsatus", "value": "" + StartSsatus + "", "displayType": "select" });
+            }
+            if (Status != "" && Status != "全部") {
+                wheres.push({ "name": "Status", "value": "" + Status + "", "displayType": "select" });
+            }
+           
+
+
+
+            var params =   {
+                "page": currentPage,
+                "rows": pageSize,
+                "sort": "ProposeTime",
+                            "order": "desc",
+                "wheres": JSON.stringify(wheres)
+            }
+            $.ajax({
+                url: host+"api/DataCollection_TaskList/getPageData",
+                type: 'POST',
+                data: JSON.stringify(params),
+                contentType: 'application/json',
+                dateType: 'json',
+                success: function (result) {
+                    $(result.rows).each(function (i) {
+                        let t = this;
+                       
+                        $.each(t, function (key, value) {
+                            if (value == null) {
+                                t[key]= "";
+                            }
+                        });
+
+
+                        $("#tab").append(" <tr " + ((i + 1) % 2 == 0 ?"style=\"background-color: #F8F8F8\"":"")+"> <td> " + this.BuMen + "</td ><td style=\"font-weight: bold;\" class=\"" + (this.Status == "未开始" ? "text-danger":"text-primary")+"\">" + this.Status + "</td><td>" + this.ResponsiblePerson + "</td><td>" + this.TaskName + "</td> <td>" + this.TaskContent +"</td>"
+                            + "<td style=\"font-weight: bold;\"  class=\"" + (this.StartSsatus == "未启动" ? "text-danger" : "text-primary") +"\">" + this.StartSsatus + "</td><td>" + this.ProposeTime + "</td>"
+                            + "<td>" + this.TaskRemarks + "</td>"
+                            + "<td>" + this.StartTime + "</td>" 
+                            + "<td>" + this.EndTime + "</td>" 
+                            + "<td>" + this.CompletionTime + "</td>"
+                            + "<td><a href=\"" + host + this.Attachment + "\" target=\"_blank\">" + this.Attachment.substring(this.Attachment.lastIndexOf("/") + 1)+"</a></td>"
+                            + " </tr >");
+
+                        
+
+                    });
+                    sunCount = result.total;
+                    if (sunCount > 0) {
+                        $('.pagination').jqPaginator({
+                            totalPages: sunCount > pageSize ? (sunCount % pageSize == 0 ? sunCount / pageSize : parseInt((sunCount / pageSize)) + 1) : 1,//设置分页的总页数
+                            visiblePages: 10,//设置最多显示的页码数（例如有100页，当前第1页，则显示1 - 7页）
+                            currentPage: currentPage,//设置当前的页码
+
+                            first: '<li class="first"><a href="javascript:void(0);">首页</a></li>',
+                            prev: '<li class="prev"><a href="javascript:void(0);">上一页</a></li>',
+                            next: '<li class="next"><a href="javascript:void(0);">下一页</a></li>',
+                            last: '<li class="last"><a href="javascript:void(0);">最后一页</a></li>',
+                            page: '<li class="page"><a href="javascript:void(0);">{{page}}</a></li>',
+                            onPageChange: function (num) {
+                                if (num != currentPage) {
+                                    currentPage = num;
+                                    init();
+                                }
+                            }
+                        });
+
+                    } else {
+                        $("#tab").append("<td colspan=\"11\"  style=\"text-align: center\">未上传数据，请登录数据收集系统维护</td>");
+                        $('.pagination').html("");
+                    }
+
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    if (XMLHttpRequest.status == 401 || XMLHttpRequest.status == 402) {
+
+                    }
+                }
+
+            });
+        }
+        init();
+
+        //左边部门绑定点击事件
+        $("#buMenList li a").click(function () {
+            $("#buMenList li a").removeClass("active");
+            $(this).addClass("active");
+            BuMen = $(this).html();
+            currentPage = 1;
+            init();
+
+        });
+         
+        var changeStartSsatus = function (s) {
+            StartSsatus = s;
+            init();
+            $(".StartSsatus").removeClass("btn-info");
+            $(".StartSsatus").each(function () {
+                if ($(this).html()==s) {
+                    $(this).addClass("btn-info");
+                } else {
+                }
+            });
+
+      
+        }
+        var changeStatus = function (s) {
+            Status = s;
+            init();
+            $(".Status").removeClass("btn-info");
+            $(".Status").each(function () {
+                if ($(this).html() == s) {
+                    $(this).addClass("btn-info");
+                } else {
+                }
+            });
+        }
+    </script>
+</body>
+</html>

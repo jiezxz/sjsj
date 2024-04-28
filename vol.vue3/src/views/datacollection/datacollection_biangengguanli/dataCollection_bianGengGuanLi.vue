@@ -85,8 +85,8 @@
                        {field:'banZhangQueRen',title:'班长确认',type:'string',width:110,align:'left'},
                        {field:'gongChengShiFuHe',title:'工程师复核',type:'string',width:110,align:'left'},
                        {field:'pingGuWanChengShiJian',title:'评估完成时间',type:'datetime',width:150,align:'left',sort:true},
-                       {field:'nbbgpssfjx',title:'内部变更评审是否进行',type:'string',bind:{ key:'是否',data:[]},width:110,align:'left'},
                        {field:'sfxjlcsp',title:'是否进行流程审批',type:'string',bind:{ key:'是否',data:[]},width:110,align:'left'},
+                       {field:'nbbgpssfjx',title:'内部变更评审是否进行',type:'string',bind:{ key:'是否',data:[]},width:110,align:'left'},
                        {field:'bgzk',title:'变更状况',type:'string',width:220,align:'left'},
                        {field:'CreateDate',title:'创建时间',type:'datetime',width:150,hidden:true,align:'left',sort:true}]);
             const detail = ref({
