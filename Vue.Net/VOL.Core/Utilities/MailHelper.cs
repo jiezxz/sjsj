@@ -56,6 +56,7 @@ namespace VOL.Core.Utilities
                 EnableSsl = enableSsl,
                 //发送人邮箱与授权密码
                 Credentials = new NetworkCredential(address, authPwd)
+               
             };
             client.Send(message);
         }

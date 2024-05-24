@@ -13,6 +13,7 @@ using VOL.Entity.DomainModels;
 using DataCollection.IServices;
 using Microsoft.AspNetCore.Authorization;
 using VOL.Core.Filters;
+using VOL.Core.Utilities;
 
 namespace DataCollection.Controllers
 {
@@ -36,6 +37,8 @@ namespace DataCollection.Controllers
         [HttpPost, Route("GetPageData"), AllowAnonymous]
         public override ActionResult GetPageData([FromBody] PageDataOptions loadData)
         {
+            //string[] adds = new string[1] { "741744490@qq.com" };
+            //MailHelper.Send("测试", "测试", adds);
             return base.GetPageData(loadData);
         
         }

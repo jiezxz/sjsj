@@ -1,4 +1,5 @@
-﻿<!doctype html>
+﻿
+<!doctype html>
 <html>
 
 <head>
@@ -8,7 +9,9 @@
 
 
     <style>
-              ::-webkit-scrollbar { width: 0.1em; }
+        ::-webkit-scrollbar {
+            width: 0.1em;
+        }
         /* 表格样式 */
         table {
             border-collapse: collapse;
@@ -18,7 +21,6 @@
 
         /* 表头样式 */
         th {
-           
             background-color: #ddd;
             border: 3px solid #ddd;
         }
@@ -30,14 +32,15 @@
             font-size: 35px;
             border: 3px solid #ddd;
         }
-        tr{
+
+        tr {
             height: 10%;
         }
 
-        /* 鼠标悬停表格样式 */
-        tr:hover {
-            background-color: #f5f5f5;
-        }
+            /* 鼠标悬停表格样式 */
+            tr:hover {
+                background-color: #f5f5f5;
+            }
 
         .title {
             font-weight: bold;
@@ -45,28 +48,38 @@
             font-size: 40px;
             color: #fff;
         }
-        .number{
-            font-size: 60px;
 
+        .number {
+            font-size: 60px;
         }
-        .bold{
+
+        .bold {
             font-weight: bold;
             font-size: 60px;
         }
-        .yg{
 
-            text-align: center; width: 60px;float: left; margin: 10px;
+        .yg {
+            text-align: center;
+            width: 60px;
+            float: left;
+            margin: 10px;
         }
-        .yg img{ width:100% ; float: left;    width: 60px;
-    height: 80px;}
-        .name{
+
+            .yg img {
+                width: 100%;
+                float: left;
+                width: 60px;
+                height: 80px;
+            }
+
+        .name {
             width: 100%;
-    font-size: 12px;
-    float: left;
-    text-align: center;
+            font-size: 12px;
+            float: left;
+            text-align: center;
         }
-        .title1 td{
-           
+
+        .title1 td {
         }
     </style>
 </head>
@@ -75,27 +88,28 @@
     <table>
         <thead>
             <tr>
-                <td colspan="5" class="title"  >
-                <span id="year"></span><span id="t_year">年</span>
-                <span id="month"></span><span id="t_month">月</span>
-                <span id="day"></span><span id="t_day">日</span>
-                                      <span id="t_scqk">生产情况</span> </td>
+                <td colspan="5" class="title">
+                    <span id="year"></span><span id="t_year">年</span>
+                    <span id="month"></span><span id="t_month">月</span>
+                    <span id="day"></span><span id="t_day">日</span>
+                    <span id="t_scqk">生产情况</span>
+                </td>
             </tr>
         </thead>
         <tbody>
-            <tr style="    background-color: aliceblue;font-weight: bold;"  class="title1">
+            <tr style="    background-color: aliceblue;font-weight: bold;" class="title1">
                 <td id="t_cx">产线</td>
-                <td  id="t_ddh">订单号</td>
-                <td  id="t_gg">规格</td>
-                <td  id="t_jrcqrs">今日出勤人数</td>
-                <td  id="t_ywgk">异物管控</td>
+                <td id="t_ddh">订单号</td>
+                <td id="t_gg">规格</td>
+                <td id="t_jrcqrs">今日出勤人数</td>
+                <td id="t_ywgk">异物管控</td>
             </tr>
             <tr>
                 <td id="shengChanXian"></td>
                 <td id="dingDanHao"> </td>
                 <td id="guiGe"></td>
                 <td id="jrcqrs" class="bold"></td>
-                <td id="ywgk"  class="bold"></td>
+                <td id="ywgk" class="bold"></td>
             </tr>
             <tr style="    background-color: khaki;
         font-weight: bold;" class="title1">
@@ -106,11 +120,11 @@
                 <td id="t_dbzt">对比昨天</td>
             </tr>
             <tr>
-                <td><span  id="t_mj">母卷</span>(wm²)</td>
+                <td><span id="t_mj">母卷</span>(wm²)</td>
                 <td id="mj_rmb" class="pingfang number"> </td>
                 <td id="mj_sj" class=" bold"></td>
                 <td id="mj_dcl" class="baifen bold"></td>
-                <td id="mj_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
+                <td id="mj_dbzt" class="bold" style=" transform: scale(2, 1);"></td>
             </tr>
 
             <tr>
@@ -118,7 +132,7 @@
                 <td id="yzl_rmb" class="baifen number"> </td>
                 <td id="yzl_sj" class="baifen bold"></td>
                 <td id="yzl_dcl" class="baifen bold"></td>
-                <td id="yzl_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
+                <td id="yzl_dbzt" class="bold" style=" transform: scale(2, 1);"></td>
             </tr>
 
             <tr>
@@ -126,7 +140,7 @@
                 <td id="al_rmb" class="baifen number"> </td>
                 <td id="al_sj" class="baifen bold"></td>
                 <td id="al_dcl" class="baifen bold"></td>
-                <td id="al_dbzt" class="bold"  style=" transform: scale(2, 1);"></td>
+                <td id="al_dbzt" class="bold" style=" transform: scale(2, 1);"></td>
             </tr>
             <tr>
                 <td> <span id="t_sl">收率</span> (%)</td>
@@ -136,9 +150,8 @@
                 <td id="sl_dbzt" class="bold" style=" transform: scale(2, 1);"></td>
             </tr>
             <tr>
-                <td  id="t_jrcqry">今日出勤人员</td>
+                <td id="t_jrcqry">今日出勤人员</td>
                 <td colspan="4" id="jrcqry" style="text-align: left;">
-                
                 </td>
             </tr>
         </tbody>
@@ -148,10 +161,10 @@
 <script>
     var getUrlParam = function (name) {
         var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);// 
-        if (r != null) return unescape(r[2]); return null;// 
+        var r = window.location.search.substr(1).match(reg);//
+        if (r != null) return unescape(r[2]); return null;//
     }
-    var shengChanXian=getUrlParam("shengChanXian").split(',');
+    var shengChanXian = getUrlParam("shengChanXian").split(',');
     var index = 0;
 
     var init = function (cx) {
@@ -163,9 +176,9 @@
             contentType: 'application/json',
             dateType: 'json',
             success: function (result) {
-                index ++;
-                if(index==shengChanXian.length){
-                    index=0;
+                index++;
+                if (index == shengChanXian.length) {
+                    index = 0;
 
                 }
                 var obj = result.rows[0];
@@ -175,23 +188,23 @@
                     $("#day").text(new Date(obj.CreateDate).getDate());
 
 
-                  //  $(".title").text(new Date(obj.CreateDate).getFullYear() + "年" + (parseInt(new Date(obj.CreateDate).getMonth()) + 1) + "月" + new Date(obj.CreateDate).getDate() + "日生产数据");
+                    //  $(".title").text(new Date(obj.CreateDate).getFullYear() + "年" + (parseInt(new Date(obj.CreateDate).getMonth()) + 1) + "月" + new Date(obj.CreateDate).getDate() + "日生产数据");
                     $("[id]").each(function () {
                         var id = $(this).attr('id');
                         if (id !== "") {
                             if (id == "jrcqry") {
                                 $(this).html("");
-                               var names=obj[id].replace(/s+/g,'').replace(/，/g,",").split(',');
-                               $(names).each(function(i,val){
-                                if(val!="")
-                                $("#jrcqry").append('<div class="yg"><img src="img/personnel/生产/'+val+'.jpg"  onerror="this.src=\'img/default_user.jpg\';this.οnerrοr=null"  /><span class="name">'+val+'</span></div>');
+                                var names = obj[id].replace(/s+/g, '').replace(/，/g, ",").split(',');
+                                $(names).each(function (i, val) {
+                                    if (val != "")
+                                        $("#jrcqry").append('<div class="yg"><img src="img/personnel/生产/' + val + '.jpg"  onerror="this.src=\'img/default_user.jpg\';this.οnerrοr=null"  /><span class="name">' + val + '</span></div>');
 
-                               });
-                            }else{
-                                var val=obj[id];
+                                });
+                            } else {
+                                var val = obj[id];
 
-                                if(parseFloat( val)>30){
-                                    val= parseFloat( val).toFixed(1);
+                                if (parseFloat(val) > 30) {
+                                    val = parseFloat(val).toFixed(1);
 
                                 }
                                 $(this).text(val);
@@ -273,7 +286,7 @@
         { "key": "t_ywgk", "c": "异物管控", "h": "이물관리" },
         { "key": "t_xm", "c": "项目", "h": "프로그램" },
         { "key": "t_rmb", "c": "日目标", "h": "일목표" },
-        { "key": "t_sj", "c": "实际", "h": "실적" },
+        { "key": "t_sj", "c": "实绩", "h": "실적" },
         { "key": "t_dc", "c": "达成率", "h": "달성율" },
         { "key": "t_dbzt", "c": "对比昨天", "h": "전일대비" },
         { "key": "t_mj", "c": "母卷", "h": "원단" },
@@ -286,11 +299,11 @@
     var tab = function () {
         $(strList).each(function () {
             if (tabIndex == 0) {
-                $("#"+this.key).text(this.h);
+                $("#" + this.key).text(this.h);
             } else {
                 $("#" + this.key).text(this.c);
             }
-           
+
 
         });
         if (tabIndex == 0) {
@@ -302,7 +315,7 @@
     }
 
 
-  
+
     init();
     $(document).ready(function () {
         // 每隔10秒执行一次函数
@@ -313,11 +326,11 @@
 
         if (getUrlParam("shengChanXian") == "CI,CJ,CK") {
 
-        // 每隔10秒执行一次函数
-        setInterval(function () {
-            // 执行的代码块
-            tab();
-        }, 10000);
+            // 每隔10秒执行一次函数
+            setInterval(function () {
+                // 执行的代码块
+                tab();
+            }, 10000);
         }
 
 

@@ -145,6 +145,12 @@
 				"navigationBarTitleText": "部门任务清单"
 			}
 		}
+			,{
+			"path": "pages/datacollection/dataCollection_IPQCInspection/dataCollection_IPQCInspection",
+			"style": {
+				"navigationBarTitleText": "IPQC巡检"
+			}
+		}
 	],
 "tabBar": { //设置要与第一个pages的path相同
 		"color": "#535353",
