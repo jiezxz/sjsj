@@ -62,9 +62,9 @@ namespace VOL.Entity.DomainModels
        public string diDian { get; set; }
 
        /// <summary>
-       ///产线
+       ///车间
        /// </summary>
-       [Display(Name ="产线")]
+       [Display(Name ="车间")]
        [MaxLength(50)]
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
@@ -141,24 +141,6 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
        public string gwzrr { get; set; }
-
-       /// <summary>
-       ///改善前证据
-       /// </summary>
-       [Display(Name ="改善前证据")]
-       [MaxLength(250)]
-       [Column(TypeName="nvarchar(250)")]
-       [Editable(true)]
-       public string gsqzj { get; set; }
-
-       /// <summary>
-       ///改善后证据
-       /// </summary>
-       [Display(Name ="改善后证据")]
-       [MaxLength(250)]
-       [Column(TypeName="nvarchar(250)")]
-       [Editable(true)]
-       public string gshzj { get; set; }
 
        /// <summary>
        ///改善措施
@@ -271,6 +253,42 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="datetime")]
        [Editable(true)]
        public DateTime? ModifyDate { get; set; }
+
+       /// <summary>
+       ///改善前证据1
+       /// </summary>
+       [Display(Name ="改善前证据1")]
+       [MaxLength(250)]
+       [Column(TypeName="nvarchar(250)")]
+       [Editable(true)]
+       public string gsqzj1 { get; set; }
+
+       /// <summary>
+       ///改善前证据2
+       /// </summary>
+       [Display(Name ="改善前证据2")]
+       [MaxLength(250)]
+       [Column(TypeName="nvarchar(250)")]
+       [Editable(true)]
+       public string gsqzj2 { get; set; }
+
+       /// <summary>
+       ///改善后证据1
+       /// </summary>
+       [Display(Name ="改善后证据1")]
+       [MaxLength(250)]
+       [Column(TypeName="nvarchar(250)")]
+       [Editable(true)]
+       public string gshzj1 { get; set; }
+
+       /// <summary>
+       ///改善后证据2
+       /// </summary>
+       [Display(Name ="改善后证据2")]
+       [MaxLength(250)]
+       [Column(TypeName="nvarchar(250)")]
+       [Editable(true)]
+       public string gshzj2 { get; set; }
 
        
     }
