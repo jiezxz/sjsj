@@ -65,8 +65,8 @@
                        {field:'Creator',title:'巡检人',type:'string',width:100,align:'left'},
                        {field:'CreateDate',title:'提交时间',type:'datetime',width:150,align:'left',sort:true},
                        {field:'ModifyID',title:'ModifyID',type:'int',width:100,hidden:true,align:'left'},
-                       {field:'Modifier',title:'Modifier',type:'string',width:100,align:'left'},
-                       {field:'ModifyDate',title:'ModifyDate',type:'datetime',width:150,align:'left',sort:true}]);
+                       {field:'Modifier',title:'修改人',type:'string',width:100,align:'left'},
+                       {field:'ModifyDate',title:'修改时间',type:'datetime',width:150,align:'left',sort:true}]);
             const detail = ref({
                 cnName: "#detailCnName",
                 table: "#detailTable",
