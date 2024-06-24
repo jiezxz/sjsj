@@ -57,9 +57,10 @@
                               [{"title":"评估完成时间","field":"pingGuWanChengShiJian","type":"date"},
                                {"dataKey":"是否","data":[],"title":"内部变更评审是否进行","field":"nbbgpssfjx","type":"select"},
                                {"title":"变更状况","field":"bgzk","type":"textarea"}]]);
-            const searchFormFields = ref({"gongChang":"","gongXu":"","shengChanXian":[],"xingHao":"","tiaoZhengRiQi":"","lianLuoShiYou":"","zhongYaoDao":""});
-            const searchFormOptions = ref([[{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"dataKey":"工序","data":[],"title":"工序","field":"gongXu","type":"select"},{"dataKey":"产线SQL","data":[],"title":"生产线","field":"shengChanXian","type":"selectList"},{"title":"型号","field":"xingHao"}],[{"dataKey":"重要度","data":[],"title":"重要度（产线动作不填）","field":"zhongYaoDao","type":"select"},{"title":"调整日期","field":"tiaoZhengRiQi","type":"date"},{"dataKey":"联络事由","data":[],"title":"联络事由","field":"lianLuoShiYou","type":"select"}]]);
-            const columns = ref([{field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left',sort:true},
+            const searchFormFields = ref({"DocumentNumber":"","gongChang":"","gongXu":"","shengChanXian":[],"xingHao":"","tiaoZhengRiQi":"","lianLuoShiYou":"","zhongYaoDao":""});
+            const searchFormOptions = ref([[{"title":"文件编号","field":"DocumentNumber","type":"like"},{"dataKey":"工厂","data":[],"title":"工厂","field":"gongChang","type":"select"},{"dataKey":"工序","data":[],"title":"工序","field":"gongXu","type":"select"},{"dataKey":"产线SQL","data":[],"title":"生产线","field":"shengChanXian","type":"selectList"},{"title":"型号","field":"xingHao"}],[{"dataKey":"重要度","data":[],"title":"重要度（产线动作不填）","field":"zhongYaoDao","type":"select"},{"title":"调整日期","field":"tiaoZhengRiQi","type":"date"},{"dataKey":"联络事由","data":[],"title":"联络事由","field":"lianLuoShiYou","type":"select"}]]);
+            const columns = ref([{field:'DocumentNumber',title:'文件编号',type:'string',width:120,readonly:true,align:'left',sort:true},
+                       {field:'gongChang',title:'工厂',type:'string',bind:{ key:'工厂',data:[]},width:120,align:'left'},
                        {field:'id',title:'id',type:'guid',width:110,hidden:true,readonly:true,require:true,align:'left'},
                        {field:'gongXu',title:'工序',type:'int',bind:{ key:'工序',data:[]},width:110,align:'left'},
                        {field:'shengChanXian',title:'生产线',type:'string',bind:{ key:'产线SQL',data:[]},width:110,align:'left'},

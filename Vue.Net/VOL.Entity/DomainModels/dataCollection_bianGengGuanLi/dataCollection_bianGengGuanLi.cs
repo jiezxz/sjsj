@@ -18,6 +18,14 @@ namespace VOL.Entity.DomainModels
     public partial class dataCollection_bianGengGuanLi:BaseEntity
     {
         /// <summary>
+       ///文件编号
+       /// </summary>
+       [Display(Name ="文件编号")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       public string DocumentNumber { get; set; }
+
+       /// <summary>
        ///工厂
        /// </summary>
        [Display(Name ="工厂")]
