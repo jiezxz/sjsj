@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -17,7 +19,7 @@
             overflow: auto;
         }
 
-       th {
+        th {
             text-align: center !important
         }
 
@@ -32,12 +34,15 @@
                 background-color: #2d8cf0;
                 color: white;
             }
+
         btn-info {
             background-color: #2d8cf0 !important;
         }
+
         .btn-info.active {
             background-color: #2d8cf0 !important;
         }
+
         li a:hover:not(.active) {
             background-color: #c9d5e2;
             color: white;
@@ -68,7 +73,8 @@
         <li><a href="#人力资源部">人力资源部</a></li>
         <li><a href="#采购部">采购部</a></li>
         <li><a href="#信息技术部">信息技术部</a></li>
-
+        <li><a href="#计划部">计划部</a></li>
+        <li><a href="#各部门">各部门</a></li>
 
     </ul>
 
@@ -78,7 +84,7 @@
             <button type="button" class="btn btn-info btn-sm active StartSsatus" onclick="changeStartSsatus('全部')">全部</button>
             <button type="button" class="btn  btn-sm active StartSsatus" onclick="changeStartSsatus('启动')">启动</button>
             <button type="button" class="btn  btn-sm active StartSsatus" onclick="changeStartSsatus('未启动')">未启动</button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             进行状态：
             <button type="button" class="btn btn-info btn-sm active Status" onclick="changeStatus('全部')">全部</button>
             <button type="button" class="btn  btn-sm active Status" onclick="changeStatus('未开始')">未开始</button>
@@ -86,9 +92,9 @@
             <button type="button" class="btn  btn-sm active Status" onclick="changeStatus('已完成')">已完成</button>
         </div>
         <br />
-        <table class="table table-bordered" >
+        <table class="table table-bordered">
             <thead>
-               
+
                 <tr style="background-color: #F8F8F8">
                     <th style="width:90px">部门</th>
                     <th style="width:90px">进行状态</th>
@@ -114,7 +120,7 @@
                 </tr>
             </tfoot>
         </table>
-    
+
     </div>
     <script>
         var currentPage = 1; //当前页
@@ -127,11 +133,11 @@
         var params = search.substr(1).split('#')[1];
         BuMen = decodeURIComponent(search.substr(1).split('#')[1]);  //获取URL#后面的部门
 
-      var host = "http://127.0.0.1:9991/";
-        //  var host = "http://172.21.56.96:9099/";
+       // var host = "http://127.0.0.1:9991/";
+        var host = "http://172.21.56.96:9099/";
         var init = function () {
             $("#tab").html("");
-        
+
             var wheres = [];
             if (BuMen != "" && BuMen != "全部") {
                 wheres.push({"name":"BuMen","value":"" + BuMen + "","displayType":"select"});
@@ -142,7 +148,7 @@
             if (Status != "" && Status != "全部") {
                 wheres.push({ "name": "Status", "value": "" + Status + "", "displayType": "select" });
             }
-           
+
 
 
 
@@ -162,7 +168,7 @@
                 success: function (result) {
                     $(result.rows).each(function (i) {
                         let t = this;
-                       
+
                         $.each(t, function (key, value) {
                             if (value == null) {
                                 t[key]= "";
@@ -173,13 +179,13 @@
                         $("#tab").append(" <tr " + ((i + 1) % 2 == 0 ?"style=\"background-color: #F8F8F8\"":"")+"> <td> " + this.BuMen + "</td ><td style=\"font-weight: bold;\" class=\"" + (this.Status == "未开始" ? "text-danger":"text-primary")+"\">" + this.Status + "</td><td>" + this.ResponsiblePerson + "</td><td>" + this.TaskName + "</td> <td>" + this.TaskContent +"</td>"
                             + "<td style=\"font-weight: bold;\"  class=\"" + (this.StartSsatus == "未启动" ? "text-danger" : "text-primary") +"\">" + this.StartSsatus + "</td><td>" + this.ProposeTime + "</td>"
                             + "<td>" + this.TaskRemarks + "</td>"
-                            + "<td>" + this.StartTime + "</td>" 
-                            + "<td>" + this.EndTime + "</td>" 
+                            + "<td>" + this.StartTime + "</td>"
+                            + "<td>" + this.EndTime + "</td>"
                             + "<td>" + this.CompletionTime + "</td>"
                             + "<td><a href=\"" + host + this.Attachment + "\" target=\"_blank\">" + this.Attachment.substring(this.Attachment.lastIndexOf("/") + 1)+"</a></td>"
                             + " </tr >");
 
-                        
+
 
                     });
                     sunCount = result.total;
@@ -227,7 +233,7 @@
             init();
 
         });
-         
+
         var changeStartSsatus = function (s) {
             StartSsatus = s;
             init();
@@ -239,7 +245,7 @@
                 }
             });
 
-      
+
         }
         var changeStatus = function (s) {
             Status = s;
