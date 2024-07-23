@@ -51,7 +51,7 @@
 				"enablePullDownRefresh": false,
 				"navigationBarTextStyle": "white",
 				"navigationBarBackgroundColor": "#00aaff"
-				
+
 			}
 		},
 		{
@@ -149,6 +149,12 @@
 			"path": "pages/datacollection/dataCollection_IPQCInspection/dataCollection_IPQCInspection",
 			"style": {
 				"navigationBarTitleText": "IPQC巡检"
+			}
+		}
+			,{
+			"path": "pages/datacollection/Sc_glq/Sc_glq",
+			"style": {
+				"navigationBarTitleText": "过滤器更换"
 			}
 		}
 	],

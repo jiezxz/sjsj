@@ -98,6 +98,14 @@ let viewgird = [
         path: '/dataCollection_IPQCInspection',
         name: 'dataCollection_IPQCInspection',
         component: () => import('@/views/datacollection/datacollection_ipqcinspection/dataCollection_IPQCInspection.vue')
+    }    ,{
+        path: '/Sc_glq',
+        name: 'Sc_glq',
+        component: () => import('@/views/datacollection/sc_glq/Sc_glq.vue')
+    }    ,{
+        path: '/dataCollection_aqyh',
+        name: 'dataCollection_aqyh',
+        component: () => import('@/views/datacollection/datacollection_aqyh/dataCollection_aqyh.vue')
     }]
 
 export default viewgird
