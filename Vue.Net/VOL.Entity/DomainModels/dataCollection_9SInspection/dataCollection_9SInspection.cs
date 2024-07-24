@@ -22,6 +22,7 @@ namespace VOL.Entity.DomainModels
        [Display(Name ="文件编号")]
        [MaxLength(50)]
        [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
        public string DocumentNumber { get; set; }
 
        /// <summary>
@@ -49,6 +50,24 @@ namespace VOL.Entity.DomainModels
        [Column(TypeName="date")]
        [Editable(true)]
        public DateTime? xjsj { get; set; }
+
+       /// <summary>
+       ///严重程度
+       /// </summary>
+       [Display(Name ="严重程度")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string yzcd { get; set; }
+
+       /// <summary>
+       ///集团分类
+       /// </summary>
+       [Display(Name ="集团分类")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string jtfl { get; set; }
 
        /// <summary>
        ///具体位置 
@@ -114,11 +133,20 @@ namespace VOL.Entity.DomainModels
        public string gsbm { get; set; }
 
        /// <summary>
+       ///部门责任人
+       /// </summary>
+       [Display(Name ="部门责任人")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
+       [Editable(true)]
+       public string bmzrr { get; set; }
+
+       /// <summary>
        ///责任人
        /// </summary>
        [Display(Name ="责任人")]
-       [MaxLength(10)]
-       [Column(TypeName="nchar(10)")]
+       [MaxLength(50)]
+       [Column(TypeName="nvarchar(50)")]
        [Editable(true)]
        public string zrr { get; set; }
 
@@ -182,18 +210,18 @@ namespace VOL.Entity.DomainModels
        public int? ModifyID { get; set; }
 
        /// <summary>
-       ///
+       ///修改人
        /// </summary>
-       [Display(Name ="Modifier")]
+       [Display(Name ="修改人")]
        [MaxLength(255)]
        [Column(TypeName="nvarchar(255)")]
        [Editable(true)]
        public string Modifier { get; set; }
 
        /// <summary>
-       ///
+       ///修改时间
        /// </summary>
-       [Display(Name ="ModifyDate")]
+       [Display(Name ="修改时间")]
        [Column(TypeName="datetime")]
        [Editable(true)]
        public DateTime? ModifyDate { get; set; }
