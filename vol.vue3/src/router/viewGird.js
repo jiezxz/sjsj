@@ -106,6 +106,10 @@ let viewgird = [
         path: '/dataCollection_aqyh',
         name: 'dataCollection_aqyh',
         component: () => import('@/views/datacollection/datacollection_aqyh/dataCollection_aqyh.vue')
+    }    ,{
+        path: '/Sc_jjb',
+        name: 'Sc_jjb',
+        component: () => import('@/views/datacollection/sc_jjb/Sc_jjb.vue')
     }]
 
 export default viewgird
