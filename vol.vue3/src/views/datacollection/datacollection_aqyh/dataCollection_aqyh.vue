@@ -27,7 +27,7 @@ export default defineComponent({
         const editFormOptions = ref([[{ "title": "文件编号", "field": "DocumentNumber", "type": "text", "disabled": true },
         { "title": "检查时间", "field": "checktime", "type": "date" },
         { "title": "检查人员", "field": "checkpeople", "type": "text" },
-        { "title": "隐患图片(编号)", "field": "YHpicture", "type": "text" }],
+        { "title": "整改前照片", "field": "YHpicture", "type": "img" }],
         [{ "title": "整改后照片", "field": "ZGpicture", "type": "img" },
         { "dataKey": "事故（事件）类别", "data": [], "title": "事故(事件)类别", "field": "type", "type": "select" },
         { "dataKey": "事故（事件）严重程度", "data": [], "title": "事故(事件)严重程度", "field": "serious", "type": "select" },
@@ -46,13 +46,13 @@ export default defineComponent({
         { "title": "复查结果", "field": "fcjg", "type": "text" }],
         [{ "title": "复查人员", "field": "fcry", "type": "text" },
         { "title": "备注", "field": "bz", "type": "textarea" }]]);
-        const searchFormFields = ref({ "YHpicture": "", "type": "", "level": "", "changqu": "", "yhbumen": "", "zgzrr": "" });
-        const searchFormOptions = ref([[{ "title": "隐患图片(编号)", "field": "YHpicture", "type": "like" }, { "dataKey": "事故（事件）类别", "data": [], "title": "事故(事件)类别", "field": "type", "type": "select" }, { "dataKey": "隐患级别", "data": [], "title": "隐患级别", "field": "level", "type": "text" }], [{ "dataKey": "工厂", "data": [], "title": "厂区", "field": "changqu", "type": "select" }, { "title": "整改责任人", "field": "zgzrr", "type": "text" }, { "dataKey": "隐患部门", "data": [], "title": "隐患部门/岗位", "field": "yhbumen", "type": "select" }]]);
+        const searchFormFields = ref({ "type": "", "level": "", "changqu": "", "yhbumen": "", "zgzrr": "" });
+        const searchFormOptions = ref([[{ "dataKey": "事故（事件）类别", "data": [], "title": "事故(事件)类别", "field": "type", "type": "select" }, { "dataKey": "隐患级别", "data": [], "title": "隐患级别", "field": "level", "type": "text" }], [{ "dataKey": "工厂", "data": [], "title": "厂区", "field": "changqu", "type": "select" }, { "title": "整改责任人", "field": "zgzrr", "type": "text" }, { "dataKey": "隐患部门", "data": [], "title": "隐患部门/岗位", "field": "yhbumen", "type": "select" }]]);
         const columns = ref([{ field: 'id', title: 'id', type: 'int', width: 110, hidden: true, readonly: true, require: true, align: 'left' },
         { field: 'DocumentNumber', title: '文件编号', type: 'string', width: 120, align: 'left', sort: true },
         { field: 'checktime', title: '检查时间', type: 'datetime', width: 150, align: 'left', sort: true },
         { field: 'checkpeople', title: '检查人员', type: 'string', width: 120, align: 'left' },
-        { field: 'YHpicture', title: '隐患图片(编号)', type: 'string', width: 220, align: 'left' },
+        { field: 'YHpicture', title: '整改前照片', type: 'string', width: 220, align: 'left' },
         { field: 'ZGpicture', title: '整改后照片', type: 'img', width: 220, align: 'left' },
         { field: 'type', title: '事故(事件)类别', type: 'string', bind: { key: '事故（事件）类别', data: [] }, width: 120, align: 'left' },
         { field: 'serious', title: '事故(事件)严重程度', type: 'string', bind: { key: '事故（事件）严重程度', data: [] }, width: 220, align: 'left' },
