@@ -1,0 +1,178 @@
+<!--
+*Author：jxx
+ *Contact：283591387@qq.com
+ *代码由框架生成,任何更改都可能导致被代码生成器覆盖
+ *业务请在@/extension/datacollection/sc_jjb/Sc_jjb.js此处编写
+ -->
+<template>
+    <div>
+        <table style="width: 100%;">
+            <tr>
+                <td style="text-align: center;font-size:42px;" colspan="2"> 交接班汇报统计表</td>
+            </tr>
+            <tr>
+                <td style="width:50% ;padding-left: 10%;font-size: 20px;">保存年限：3年</td>
+                <td style="width:50%;text-align: right;padding-right: 10%;font-size: 24px;">COR-MF-006 A/2</td>
+            </tr>
+        </table>
+        <view-grid ref="grid" :columns="columns" :detail="detail" :editFormFields="editFormFields"
+            :editFormOptions="editFormOptions" :searchFormFields="searchFormFields" :searchFormOptions="searchFormOptions"
+            :table="table" :extend="extend">
+        </view-grid>
+        <table style="width: 100%;">
+            <tr>
+                <td style="width:50% ;padding-left: 10%;font-size: 20px;">保存年限：3年</td>
+                <td style="width:50%;text-align: right;padding-right: 10%;font-size: 24px;">COR-MF-006 A/2</td>
+            </tr>
+        </table>
+    </div>
+</template>
+<script>
+import extend from "@/extension/datacollection/sc_jjb/Sc_jjb.js";
+import { ref, defineComponent } from "vue";
+export default defineComponent({
+    setup() {
+        const table = ref({
+            key: 'id',
+            footer: "Foots",
+            cnName: '交接班汇报统计表',
+            name: 'sc_jjb/Sc_jjb',
+            url: "/Sc_jjb/",
+            sortName: "id"
+        });
+        const editFormFields = ref({ "DocumentNumber": "", "chejian": "", "chanxian": "", "chanxianS": "", "renshu": "", "banbie": "", "weidaors": "", "banbieS": "", "riqi": "", "shidaors": "", "riqiS": "", "guige": "", "gonshang": "", "guigeS": "", "jichuliang": "", "anquan": "", "jichuliangS": "", "sv": "", "svS": "", "weiwancheng": "", "changdu": "", "zhishi": "", "changduS": "", "mujuan": "", "rwshixiang": "", "mujuanS": "", "chanliang": "", "qitayichang": "", "chanliangS": "", "jiaojieren": "", "zjjmianji": "", "zjjmianjiS": "", "jiebanren": "", "zjjtubumj": "", "zjjtubumjS": "", "shichang": "", "shichangS": "", "mubiao": "", "mubiaoS": "", "Amubiao": "", "AmubiaoS": "", "Achanliang": "", "AchanliangS": "", "dacheng": "", "dachengS": "", "shijiA": "", "shijiAS": "", "yunzhuan": "", "yunzhuanS": "", "zonchanliang": "", "zonchanliangS": "", "yichang": "", "yichangS": "" });
+        const editFormOptions = ref([[{ "title": "文件编号", "field": "DocumentNumber", "colSize": 6, "disabled": true },
+        { "dataKey": "车间", "data": [], "title": "车间", "field": "chejian", "colSize": 6, "type": "select" }],
+        [{ "dataKey": "产线-中文", "data": [], "title": "产线", "field": "chanxian", "type": "select" },
+        { "dataKey": "产线-中文", "data": [], "title": "产线(白/夜)", "field": "chanxianS", "type": "select" },
+        { "title": "应到人数", "field": "renshu", "type": "text" }],
+        [{ "dataKey": "班次", "data": [], "title": "班别(白/夜)", "field": "banbie", "type": "select" },
+        { "dataKey": "班次", "data": [], "title": "班别", "field": "banbieS", "type": "select" },
+        { "title": "未到人数", "field": "weidaors", "type": "text" }],
+        [{ "title": "日期", "field": "riqi", "type": "date" },
+        { "title": "日期", "field": "riqiS", "type": "date" },
+        { "title": "实到人数", "field": "shidaors" }],
+        [{ "title": "产品规格", "field": "guige", "type": "text" },
+        { "title": "产品规格", "field": "guigeS", "type": "text" },
+        { "title": "工伤情况交接", "field": "gonshang", "type": "textarea" }],
+        [{ "title": "挤出量(kg/h)", "field": "jichuliang", "type": "text" },
+        { "title": "挤出量(kg/h)", "field": "jichuliangS", "type": "text" },
+        { "title": "车间安全情况交接", "field": "anquan", "type": "textarea" }],
+        [{ "title": "线速度(m/min)", "field": "sv", "type": "text" },
+        { "title": "线速度(m/min)", "field": "svS", "type": "text" },
+        { "title": "9S未完成整改项交接", "field": "weiwancheng", "type": "text" }],
+        [{ "title": "收卷长度(m)", "field": "changdu", "type": "text" },
+        { "title": "收卷长度(m)", "field": "changduS", "type": "text" },
+        { "title": "交接上级指示或部门文件通知看板更新等管理事宜", "field": "zhishi", "type": "textarea" }],
+        [{ "title": "母卷卷数(m²)", "field": "mujuan", "type": "text" },
+        { "title": "母卷卷数(m²)", "field": "mujuanS", "type": "text" },
+        { "title": "任务事项交接", "field": "rwshixiang", "type": "textarea" }],
+        [{ "title": "母卷产量(m²)", "field": "chanliang", "type": "text" },
+        { "title": "母卷产量(m²)", "field": "chanliangS", "type": "text" },
+        { "title": "其他异常情况", "field": "qitayichang", "type": "textarea" }],
+        [{ "title": "中间卷基膜面积(m²)", "field": "zjjmianji", "type": "text" },
+        { "title": "中间卷基膜面积(m²)", "field": "zjjmianjiS" },
+        { "title": "交接人", "field": "jiaojieren", "type": "text" }],
+        [{ "title": "中间卷涂布膜面积(m²)", "field": "zjjtubumj", "type": "text" },
+        { "title": "中间卷涂布膜面积(m²)", "field": "zjjtubumjS", "type": "text" },
+        { "title": "接班人", "field": "jiebanren", "type": "text" }],
+        [{ "title": "正常生产时长(min)", "field": "shichang", "type": "text" },
+        { "title": "正常生产时长(min)", "field": "shichangS", "type": "text" }],
+        [{ "title": "当班A品产量目标(m²)", "field": "mubiao", "type": "text" },
+        { "title": "当班A品产量目标(m²)", "field": "mubiaoS", "type": "text" }],
+        [{ "title": "A率目标%", "field": "Amubiao", "type": "text" },
+        { "title": "A率目标%", "field": "AmubiaoS", "type": "text" }],
+        [{ "title": "当班A品产量(m²)", "field": "Achanliang", "type": "text" },
+        { "title": "当班A品产量(m²)", "field": "AchanliangS", "type": "text" }],
+        [{ "title": "产量目标达成率(%)", "field": "dacheng", "type": "text" },
+        { "title": "产量目标达成率(%)", "field": "dachengS", "type": "text" }],
+        [{ "title": "当班实际A率", "field": "shijiA", "type": "text" },
+        { "title": "当班实际A率", "field": "shijiAS", "type": "text" }],
+        [{ "title": "当班运转率", "field": "yunzhuan", "type": "text" },
+        { "title": "当班运转率", "field": "yunzhuanS", "type": "text" }],
+        [{ "title": "当月A品总产量", "field": "zonchanliang", "type": "text" },
+        { "title": "当月A品总产量", "field": "zonchanliangS", "type": "text" }],
+        [{ "title": "产线异常情况", "field": "yichang", "type": "textarea" },
+        { "title": "产线异常情况", "field": "yichangS", "type": "textarea" }]]);
+        const searchFormFields = ref({ "DocumentNumber": "", "chejian": "", "chanxian": "", "jiaojieren": "", "jiebanren": "", "banbie": "" });
+        const searchFormOptions = ref([[{ "dataKey": "车间", "data": [], "title": "车间", "field": "chejian", "type": "select" }, { "title": "文件编号", "field": "DocumentNumber", "type": "like" }, { "title": "交接人", "field": "jiaojieren", "type": "text" }], [{ "dataKey": "产线-中文", "data": [], "title": "产线", "field": "chanxian", "type": "select" }, { "dataKey": "班次", "data": [], "title": "班别(白/夜)", "field": "banbie", "type": "select" }, { "title": "接班人", "field": "jiebanren", "type": "text" }]]);
+        const columns = ref([{ field: 'id', title: '序号', type: 'int', width: 110, hidden: true, readonly: true, require: true, align: 'left' },
+        { field: 'DocumentNumber', title: '文件编号', type: 'string', width: 120, align: 'left', sort: true },
+        { field: 'chejian', title: '车间', type: 'string', bind: { key: '车间', data: [] }, width: 120, align: 'left' },
+        { field: 'chanxian', title: '产线', type: 'string', bind: { key: '产线-中文', data: [] }, width: 120, align: 'left' },
+        { field: 'jiaojieren', title: '交接人', type: 'string', width: 120, align: 'left' },
+        { field: 'chanxianS', title: '产线(白/夜)', type: 'string', bind: { key: '产线-中文', data: [] }, width: 120, align: 'left' },
+        { field: 'jiebanren', title: '接班人', type: 'string', width: 120, align: 'left' },
+        { field: 'banbie', title: '班别(白/夜)', type: 'string', bind: { key: '班次', data: [] }, width: 120, align: 'left' },
+        { field: 'riqi', title: '日期', type: 'string', width: 120, align: 'left' },
+        { field: 'guige', title: '产品规格', type: 'string', width: 120, align: 'left' },
+        { field: 'jichuliang', title: '挤出量(kg/h)', type: 'string', width: 120, align: 'left' },
+        { field: 'sv', title: '线速度(m/min)', type: 'string', width: 120, align: 'left' },
+        { field: 'changdu', title: '收卷长度(m)', type: 'string', width: 220, align: 'left' },
+        { field: 'mujuan', title: '母卷卷数(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'chanliang', title: '母卷产量(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'zjjmianji', title: '中间卷基膜面积(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'zjjtubumj', title: '中间卷涂布膜面积(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'shichang', title: '正常生产时长(min)', type: 'string', width: 220, align: 'left' },
+        { field: 'mubiao', title: '当班A品产量目标(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'Amubiao', title: 'A率目标%', type: 'string', width: 220, align: 'left' },
+        { field: 'Achanliang', title: '当班A品产量(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'dacheng', title: '产量目标达成率(%)', type: 'string', width: 220, align: 'left' },
+        { field: 'shijiA', title: '当班实际A率', type: 'string', width: 220, align: 'left' },
+        { field: 'yunzhuan', title: '当班运转率', type: 'string', width: 220, align: 'left' },
+        { field: 'zonchanliang', title: '当月A品总产量', type: 'string', width: 220, align: 'left' },
+        { field: 'yichang', title: '产线异常情况', type: 'string', width: 220, align: 'left' },
+        { field: 'renshu', title: '应到人数', type: 'string', width: 220, align: 'left' },
+        { field: 'weidaors', title: '未到人数', type: 'string', width: 220, align: 'left' },
+        { field: 'shidaors', title: '实到人数', type: 'string', width: 220, align: 'left' },
+        { field: 'gonshang', title: '工伤情况交接', type: 'string', width: 220, align: 'left' },
+        { field: 'anquan', title: '车间安全情况交接', type: 'string', width: 220, align: 'left' },
+        { field: 'zhishi', title: '交接上级指示或部门文件通知看板更新等管理事宜', type: 'string', width: 220, align: 'left' },
+        { field: 'rwshixiang', title: '任务事项交接', type: 'string', width: 220, align: 'left' },
+        { field: 'qitayichang', title: '其他异常情况', type: 'string', width: 220, align: 'left' },
+        { field: 'CreateID', title: '创建者ID', type: 'int', width: 100, hidden: true, align: 'left' },
+        { field: 'Creator', title: '创建人', type: 'string', width: 100, align: 'left' },
+        { field: 'CreateDate', title: '创建时间', type: 'datetime', width: 150, align: 'left', sort: true },
+        { field: 'ModifyID', title: '修改人ID', type: 'int', width: 100, hidden: true, align: 'left' },
+        { field: 'Modifier', title: '修改人名称', type: 'string', width: 100, align: 'left' },
+        { field: 'ModifyDate', title: '修改时间', type: 'datetime', width: 150, align: 'left', sort: true },
+        { field: 'yichangS', title: '产线异常情况', type: 'string', width: 220, align: 'left' },
+        { field: 'yunzhuanS', title: '当班运转率', type: 'string', width: 220, align: 'left' },
+        { field: 'banbieS', title: '班别', type: 'string', bind: { key: '班次', data: [] }, width: 220, align: 'left' },
+        { field: 'riqiS', title: '日期', type: 'string', width: 220, align: 'left' },
+        { field: 'guigeS', title: '产品规格', type: 'string', width: 220, align: 'left' },
+        { field: 'jichuliangS', title: '挤出量(kg/h)', type: 'string', width: 220, align: 'left' },
+        { field: 'svS', title: '线速度(m/min)', type: 'string', width: 220, align: 'left' },
+        { field: 'changduS', title: '收卷长度(m)', type: 'string', width: 220, align: 'left' },
+        { field: 'mujuanS', title: '母卷卷数(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'zonchanliangS', title: '当月A品总产量', type: 'string', width: 220, align: 'left' },
+        { field: 'chanliangS', title: '母卷产量(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'zjjtubumjS', title: '中间卷涂布膜面积(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'shichangS', title: '正常生产时长(min)', type: 'string', width: 220, align: 'left' },
+        { field: 'mubiaoS', title: '当班A品产量目标(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'AmubiaoS', title: 'A率目标%', type: 'string', width: 220, align: 'left' },
+        { field: 'AchanliangS', title: '当班A品产量(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'dachengS', title: '产量目标达成率(%)', type: 'string', width: 220, align: 'left' },
+        { field: 'shijiAS', title: '当班实际A率', type: 'string', width: 220, align: 'left' },
+        { field: 'zjjmianjiS', title: '中间卷基膜面积(m²)', type: 'string', width: 220, align: 'left' },
+        { field: 'weiwancheng', title: '9S未完成整改项交接', type: 'string', width: 220, align: 'left' }]);
+        const detail = ref({
+            cnName: "#detailCnName",
+            table: "#detailTable",
+            columns: [],
+            sortName: "",
+            key: ""
+        });
+        return {
+            table,
+            extend,
+            editFormFields,
+            editFormOptions,
+            searchFormFields,
+            searchFormOptions,
+            columns,
+            detail,
+        };
+    },
+});
+</script>

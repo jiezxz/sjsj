@@ -65,8 +65,8 @@ export default defineComponent({
         [{ "title": "生产班长确认", "field": "banzhang", "type": "text" },
         { "dataKey": "产线-中文", "data": [], "title": "线别", "field": "xianbie", "type": "select" },
         { "title": "备注", "field": "beizhu", "type": "textarea" }]]);
-        const searchFormFields = ref({ "DocumentNumber": "", "jingdu": "", "starttime": "", "endtime": "", "banbie": "", "banci": "", "guolvqID": "" });
-        const searchFormOptions = ref([[{ "title": "文件编号", "field": "DocumentNumber", "type": "like" }, { "title": "过滤网精度(um)", "field": "jingdu", "type": "text" }, { "title": "开始使用时间", "field": "starttime", "type": "datetime" }], [{ "title": "结束使用时间", "field": "endtime", "type": "datetime" }, { "dataKey": "班主", "data": [], "title": "班别", "field": "banbie", "type": "select" }, { "dataKey": "班次", "data": [], "title": "班次", "field": "banci", "type": "select" }], [{ "title": "过滤器身份编号", "field": "guolvqID", "type": "text" }]]);
+        const searchFormFields = ref({ "DocumentNumber": "", "xianbie": "", "jingdu": "", "starttime": "", "endtime": "", "banbie": "", "banci": "", "guolvqID": "" });
+        const searchFormOptions = ref([[{ "dataKey": "产线-中文", "data": [], "title": "线别", "field": "xianbie", "type": "select" }, { "title": "过滤网精度(um)", "field": "jingdu", "type": "text" }, { "title": "文件编号", "field": "DocumentNumber", "type": "like" }, { "title": "开始使用时间", "field": "starttime", "type": "datetime" }], [{ "title": "结束使用时间", "field": "endtime", "type": "datetime" }, { "dataKey": "班主", "data": [], "title": "班别", "field": "banbie", "type": "select" }, { "dataKey": "班次", "data": [], "title": "班次", "field": "banci", "type": "select" }], [{ "title": "过滤器身份编号", "field": "guolvqID", "type": "text" }]]);
         const columns = ref([{ field: 'DocumentNumber', title: '文件编号', type: 'string', width: 120, align: 'left', sort: true },
         { field: 'id', title: '序号', type: 'int', width: 110, hidden: true, require: true, align: 'left' },
         { field: 'xianbie', title: '线别', type: 'string', bind: { key: '产线-中文', data: [] }, width: 120, align: 'left' },
