@@ -18,6 +18,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Http;
 using DataCollection.IRepositories;
 using System;
+using System.Collections.Generic;
 
 namespace DataCollection.Services
 {
@@ -39,12 +40,43 @@ namespace DataCollection.Services
             //base.Init(dbRepository);
         }
     WebResponseContent webResponse = new WebResponseContent();
-    /// <summary>
-    /// 新建
-    /// </summary>
-    /// <param name="Add"></param>
-    /// <returns></returns>
-    public override WebResponseContent Add(SaveModel saveDataModel)
+
+
+        /// <summary>
+        /// 导入
+        /// </summary>
+        /// <param name="files"></param>
+        /// <returns></returns>
+        public override WebResponseContent Import(List<IFormFile> files)
+        {
+          
+            //导入保存前处理(可以对list设置新的值)
+            ImportOnExecuting = (List<dataCollection_aqyh> list) =>
+            {
+                //设置webResponse.Code = "-1"会中止后面代码执行，与返回 webResponse.Error()一样，区别在于前端提示的是成功或失败
+                //webResponse.Code = "-1";
+                //webResponse.Message = "测试强制返回";
+                //return webResponse.OK("ok");
+
+                foreach (var item in list)
+                {
+                    item.DocumentNumber = GetOrderNo("");
+                }
+
+                return webResponse.OK();
+            };
+ 
+            return base.Import(files);
+        }
+
+
+
+        /// <summary>
+        /// 新建
+        /// </summary>
+        /// <param name="Add"></param>
+        /// <returns></returns>
+        public override WebResponseContent Add(SaveModel saveDataModel)
     {
 
       // 在保存数据库前的操作，所有数据都验证通过了，这一步执行完就执行数据库保存
