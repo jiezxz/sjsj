@@ -52,8 +52,8 @@
                                {"title":"复查结果","field":"fcjg","type":"text"}],
                               [{"title":"复查人员","field":"fcry","type":"text"},
                                {"title":"备注","field":"bz","type":"textarea"}]]);
-            const searchFormFields = ref({"type":"","level":"","changqu":"","yhbumen":"","zgzrr":""});
-            const searchFormOptions = ref([[{"dataKey":"事故（事件）类别","data":[],"title":"事故(事件)类别","field":"type","type":"select"},{"dataKey":"隐患级别","data":[],"title":"隐患级别","field":"level","type":"text"}],[{"dataKey":"工厂","data":[],"title":"厂区","field":"changqu","type":"select"},{"title":"整改责任人","field":"zgzrr","type":"text"},{"dataKey":"隐患部门","data":[],"title":"隐患部门/岗位","field":"yhbumen","type":"select"}]]);
+            const searchFormFields = ref({"type":"","level":"","changqu":"","yhbumen":"","zgzrr":"","Creator":""});
+            const searchFormOptions = ref([[{"dataKey":"事故（事件）类别","data":[],"title":"事故(事件)类别","field":"type","type":"select"},{"dataKey":"隐患级别","data":[],"title":"隐患级别","field":"level","type":"text"},{"title":"创建人","field":"Creator","type":"like"}],[{"dataKey":"工厂","data":[],"title":"厂区","field":"changqu","type":"select"},{"title":"整改责任人","field":"zgzrr","type":"text"},{"dataKey":"隐患部门","data":[],"title":"隐患部门/岗位","field":"yhbumen","type":"select"}]]);
             const columns = ref([{field:'id',title:'id',type:'int',width:110,hidden:true,readonly:true,require:true,align:'left'},
                        {field:'DocumentNumber',title:'文件编号',type:'string',width:120,align:'left',sort:true},
                        {field:'checktime',title:'检查时间',type:'datetime',width:150,align:'left',sort:true},
