@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
@@ -66,7 +66,7 @@ namespace VOL.System.Services
                     Role_Id = user.Role_Id
                 });
                 user.Token = token;
-                webResponse.Data = new { token, userName = user.UserTrueName, img = user.HeadImageUrl };
+                webResponse.Data = new { token, userName = user.UserTrueName, img = user.HeadImageUrl,Role_Id = user.Role_Id };
                 repository.Update(user, x => x.Token, true);
                 UserContext.Current.LogOut(user.User_Id);
 

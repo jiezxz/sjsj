@@ -5,7 +5,8 @@
       :fullscreen="fullscreen" :draggable="draggable" :modal="modal" :before-close="handleClose">
       <template #header>
         <i :class="icon"></i> {{ title }}
-        <button class="el-dialog__headerbtn" type="button" style="right: 35px; color: var(--el-color-info)" @click="handleFullScreen">
+        <button class="el-dialog__headerbtn" type="button" style="right: 35px; color: var(--el-color-info)"
+          @click="handleFullScreen">
           <i class="el-icon el-icon-full-screen"></i>
         </button>
       </template>
@@ -75,10 +76,10 @@ export default defineComponent({
       //2021.07.11增加弹出框关闭事件
       type: Function,
       default: (iconClick) => {
-        return true;        
+        return true;
       }
     },
-    footer:{ //是否显示底部按钮
+    footer: { //是否显示底部按钮
       type: Boolean,
       default: true
     }
@@ -102,11 +103,11 @@ export default defineComponent({
       done && done();
     };
     const calcHeight = (val) => {
-    //  if (props.height > clientHeight) {
-    //  if(true){
-        contentHeight.value = clientHeight - 30;
-        return clientHeight / -2 + 'px';
-    //  }
+      //  if (props.height > clientHeight) {
+      //  if(true){
+      contentHeight.value = clientHeight - 30;
+      return clientHeight / -2 + 'px';
+      //  }
       // contentHeight.value = val || props.height;
       // return (props.height + 56) / -2 + 'px';
     };
@@ -123,8 +124,8 @@ export default defineComponent({
         top.value = calcHeight();
       }
     );
-    const fullscreen=ref(false);
-    const handleFullScreen=()=> {
+    const fullscreen = ref(false);
+    const handleFullScreen = () => {
       fullscreen.value = !fullscreen.value;
       context.emit("fullscreen", fullscreen.value);
     }
@@ -176,8 +177,11 @@ export default defineComponent({
   height: 50px;
   color: rgb(79, 79, 79);
   font-weight: bold;
-  font-size: 14px;
+  font-size: 22px;
   margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   // background-image: linear-gradient(135deg, #0cd7bd 10%, #50c3f7);
 }
 
@@ -194,6 +198,7 @@ export default defineComponent({
   padding-right: 30px;
   padding-left: 5px;
 }
+
 // .vol-dialog ::v-deep(.el-dialog__headerbtn .el-dialog__close) {
 //   color: #fff;
 // }
